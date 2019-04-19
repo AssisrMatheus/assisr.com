@@ -1,0 +1,15 @@
+{
+  "description": "Olá, meu nome é matheus, seja bem vindo ao meu site! Sou um desenvolvedor full stack. Gosto sempre de aprender e trabalhar com coisas novas já que aprendo relativamente rápido e mantém o trabalho dinâmico. Recentementetenho buscado mais conhecimento e experiência na área de frameworks front-end e node.",
+  "social": [
+    {
+      "name": "Github",
+      "url": "https://github.com/AssisrMatheus",
+      "image": "https://camo.githubusercontent.com/7710b43d0476b6f6d4b4b2865e35c108f69991f3/68747470733a2f2f7777772e69636f6e66696e6465722e636f6d2f646174612f69636f6e732f6f637469636f6e732f313032342f6d61726b2d6769746875622d3235362e706e67"
+    },
+    {
+      "name": "Linkedin",
+      "url": "https://www.linkedin.com/in/assisrmatheus/",
+      "image": "https://cdn1.iconfinder.com/data/icons/logotypes/32/square-linkedin-512.png"
+    }
+  ]
+}

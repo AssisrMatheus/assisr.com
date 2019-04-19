@@ -1,7 +1,9 @@
 import { createGlobalStyle } from "styled-components";
 
 const GlobalStyle = createGlobalStyle`
-  body {
+  @import url('https://fonts.googleapis.com/css?family=Rubik');
+
+  body {    
     --primary: #313131;
     --primary-light: #5a5a5a;
     --primary-dark: #080808;
@@ -16,7 +18,9 @@ const GlobalStyle = createGlobalStyle`
     background-color: var(--primary);
     color: var(--primary-text);
 
-    * {
+    font-family: 'Rubik', sans-serif;
+
+    #root {
       height: 800px;
       max-width: 1070px;
       margin: 0 auto;
