@@ -8,7 +8,9 @@ const DescriptionStyles = styled.div`
 `;
 
 // Paragraph that displays the description
-const DescriptionText = styled.p``;
+const DescriptionText = styled.p`
+  margin-top: 0;
+`;
 
 // Wrapper for social
 const DescriptionSocial = styled.div`
@@ -19,21 +21,19 @@ const DescriptionSocial = styled.div`
 // Clickable link with child image
 const SocialLink = styled.a`
   display: block;
+  font-size: 2em;
+
+  path {
+    fill: var(--secondary);
+  }
+
+  &:visited {
+    color: initial;
+  }
+
   &:not(:last-child) {
     margin-right: var(--distance-value);
   }
 `;
 
-// Icon to be displayed
-const SocialImage = styled.img`
-  object-fit: contain;
-  max-height: calc(var(--distance-value) * 3);
-`;
-
-export {
-  DescriptionStyles,
-  DescriptionText,
-  DescriptionSocial,
-  SocialLink,
-  SocialImage
-};
+export { DescriptionStyles, DescriptionText, DescriptionSocial, SocialLink };

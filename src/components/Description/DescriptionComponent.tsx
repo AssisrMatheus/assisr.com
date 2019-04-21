@@ -1,16 +1,19 @@
 import React, { Component } from "react";
+
+import { fab } from "@fortawesome/free-brands-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
 import {
   DescriptionSocial,
   DescriptionStyles,
   DescriptionText,
-  SocialImage,
   SocialLink
 } from "./DescriptionStyles";
 
 interface ISocialContainerProps {
   name: string;
   url: string;
-  image: string;
+  icon: string;
 }
 
 interface IDescriptionComponentProps {
@@ -20,7 +23,7 @@ interface IDescriptionComponentProps {
 
 const SocialContainer = (props: ISocialContainerProps) => (
   <SocialLink href={props.url} target="_blank">
-    <SocialImage src={props.image} />
+    <FontAwesomeIcon icon={fab[props.icon]} />
   </SocialLink>
 );
 

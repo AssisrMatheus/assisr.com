@@ -1,5 +1,7 @@
 import React from "react";
+
 // Components
+import ActivityListContainer from "../../components/ActivityList/ActivityListContainer";
 import DescriptionComponent from "../../components/Description/DescriptionComponent";
 import PhotoComponent from "./../../components/Photo/PhotoComponent";
 
@@ -19,6 +21,7 @@ const Home = () => (
         social={data.social}
       />
     </ContentDivider>
+    <ActivityListContainer />
   </React.Fragment>
 );
 
