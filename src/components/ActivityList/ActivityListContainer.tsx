@@ -7,7 +7,7 @@ import IActivity from "./../../interfaces/IActivity";
 import { connect } from "react-redux";
 import { bindActionCreators, Dispatch } from "redux";
 import { createActivityFetch } from "../../redux/modules/activity/creators";
-import { AppState } from "./../../redux/reducers";
+import { StateType } from "../../redux/reducers";
 
 // Components
 import ActivityListComponent from "./ActivityListComponent";
@@ -32,7 +32,7 @@ const ActivityListContainer = (props: IActivityListContainerProps) => {
   );
 };
 
-const mapStateToProps = (state: AppState) => ({
+const mapStateToProps = (state: StateType) => ({
   activityList: state.activity.activityList,
   error: state.activity.error,
   fetching: state.activity.fetching

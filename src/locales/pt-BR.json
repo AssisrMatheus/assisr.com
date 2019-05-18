@@ -1,0 +1,4 @@
+{
+  "ACTIVITIES": "Atividades",
+  "ACTIVITIES_DESCRIPTION": "Atualizado em tempo real, com cache mantido a cada {cacheTimeout} minutos."
+}

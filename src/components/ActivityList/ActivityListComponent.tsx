@@ -1,4 +1,6 @@
+// Common
 import React from "react";
+import intl from "react-intl-universal";
 
 // Interfaces
 import IActivity from "./../../interfaces/IActivity";
@@ -16,7 +18,7 @@ interface IActivityListComponent {
 
 const ActivityListComponent = (props: IActivityListComponent) => (
   <React.Fragment>
-    <ActivityTitle>Atividades</ActivityTitle>
+    <ActivityTitle>{intl.get("ACTIVITIES")}</ActivityTitle>
     {props.fetching ? (
       <div>LOADING</div>
     ) : (
