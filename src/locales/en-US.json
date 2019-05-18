@@ -1,4 +1,0 @@
-{
-  "ACTIVITIES": "Activities",
-  "ACTIVITIES_DESCRIPTION": "Fetched in real time, but cached between each {cacheTimeout} minutes."
-}
