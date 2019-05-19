@@ -1,5 +1,7 @@
 import moment from "moment";
 import React from "react";
+import retext from "retext";
+import emoji from "retext-emoji";
 
 // Dependencies
 import { faGithub, faYoutube } from "@fortawesome/free-brands-svg-icons";
@@ -28,7 +30,10 @@ const ActivityComponent = (props: IActivity) => {
       <ActivityLink href={props.url} target="_blank">
         <FontAwesomeIcon icon={iconMap[props.origin] || faQuestionCircle} />
         <ActivityContent>
-          {props.content}
+          {retext()
+            .use(emoji, { convert: "encode" })
+            .processSync(props.content)
+            .toString()}
           <ActivityLabel> - {moment(props.timestamp).fromNow()}</ActivityLabel>
         </ActivityContent>
       </ActivityLink>
