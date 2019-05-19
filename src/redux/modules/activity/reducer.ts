@@ -1,49 +1,54 @@
+import { createReducer } from "redux-starter-kit";
+
 import IActivity from "./../../../interfaces/IActivity";
+
 import {
   ACTIVITY_FAILURE,
   ACTIVITY_FETCH,
+  ACTIVITY_FETCH_FINISH,
   ACTIVITY_SUCCESS,
-  GithubActionTypes
-} from "./types";
+  IActivityFailureAction,
+  IActivitySuccessAction
+} from "./actionTypes";
 
-export interface IGithubState {
+export interface IActivityState {
   activityList: IActivity[];
-  error: string | undefined;
+  error: string[];
   fetching: boolean;
 }
 
 // Reducer
-const initialState: IGithubState = {
+const initialState: IActivityState = {
   activityList: [],
-  error: undefined,
+  error: [],
   fetching: false
 };
 
-export const reducer = (
-  state = initialState,
-  action: GithubActionTypes
-): IGithubState => {
-  switch (action.type) {
-    case ACTIVITY_FETCH:
-      return {
-        ...state,
-        fetching: true
-      };
-    case ACTIVITY_SUCCESS:
-      return {
-        ...state,
-        activityList: action.activityList,
-        error: undefined,
-        fetching: false
-      };
-    case ACTIVITY_FAILURE:
-      return {
-        ...state,
-        activityList: [],
-        error: action.error,
-        fetching: false
-      };
-    default:
-      return state;
+export const reducer = createReducer(initialState, {
+  [ACTIVITY_FETCH]: (state: IActivityState) => {
+    state.fetching = true;
+  },
+  [ACTIVITY_SUCCESS]: (
+    state: IActivityState,
+    action: IActivitySuccessAction
+  ) => {
+    state.activityList = state.activityList
+      .concat(action.list)
+      .sort((a: any, b: any) => {
+        return a.timestamp > b.timestamp ? -1 : 1;
+      });
+    state.error = initialState.error;
+  },
+  [ACTIVITY_FAILURE]: (
+    state: IActivityState,
+    action: IActivityFailureAction
+  ) => {
+    state.fetching = false;
+    if (action.error) {
+      state.error.push(action.error);
+    }
+  },
+  [ACTIVITY_FETCH_FINISH]: (state: IActivityState) => {
+    state.fetching = false;
   }
-};
+});

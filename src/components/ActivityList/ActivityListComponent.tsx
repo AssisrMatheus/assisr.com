@@ -10,26 +10,17 @@ import ActivityComponent from "./../Activity/ActivityComponent";
 import { ActivityTitle } from "./ActivityListStyles";
 
 interface IActivityListComponent {
-  list: IActivity[];
+  activityList: IActivity[];
   fetching: boolean;
 }
 
 const ActivityListComponent = (props: IActivityListComponent) => (
   <React.Fragment>
     <ActivityTitle>Atividades</ActivityTitle>
-    {props.fetching ? (
-      <div>LOADING</div>
-    ) : (
-      props.list.map(item => (
-        <ActivityComponent
-          key={item.content}
-          content={item.content}
-          origin={item.origin}
-          url={item.url}
-          date={item.timestamp.fromNow()}
-        />
-      ))
-    )}
+    {props.fetching && <div>LOADING</div>}
+    {props.activityList.map(item => (
+      <ActivityComponent key={item.content} {...item} />
+    ))}
   </React.Fragment>
 );
 

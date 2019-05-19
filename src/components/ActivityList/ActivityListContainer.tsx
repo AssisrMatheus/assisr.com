@@ -6,28 +6,28 @@ import IActivity from "./../../interfaces/IActivity";
 // Redux
 import { connect } from "react-redux";
 import { bindActionCreators, Dispatch } from "redux";
-import { createActivityFetch } from "../../redux/modules/activity/creators";
-import { AppState } from "./../../redux/reducers";
+import { doActivityFetch } from "../../redux/modules/activity/actionCreators";
+import { AppState } from "../../redux/reducers";
 
 // Components
 import ActivityListComponent from "./ActivityListComponent";
 
 interface IActivityListContainerProps {
-  doActivityFetch: typeof createActivityFetch;
+  doActivityFetch: typeof doActivityFetch;
   activityList: IActivity[];
-  error: string | undefined;
+  error: string[];
   fetching: boolean;
 }
 
 const ActivityListContainer = (props: IActivityListContainerProps) => {
   useEffect(() => {
-    props.doActivityFetch("assisrmatheus");
+    props.doActivityFetch("assisrmatheus", "UCwtuk0k5hX_HWWSidYSIvLg");
   }, []);
 
   return (
     <ActivityListComponent
       fetching={props.fetching}
-      list={props.activityList}
+      activityList={props.activityList}
     />
   );
 };
@@ -41,7 +41,7 @@ const mapStateToProps = (state: AppState) => ({
 const mapDispatchToProps = (dispatch: Dispatch) =>
   bindActionCreators(
     {
-      doActivityFetch: createActivityFetch
+      doActivityFetch
     },
     dispatch
   );

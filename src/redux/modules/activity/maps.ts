@@ -1,12 +1,12 @@
-import moment from "moment";
 import IActivity from "../../../interfaces/IActivity";
 import IGithubEvent from "../../../interfaces/IGithubEvent";
+import { IYoutubeSearchItem } from "../../../interfaces/IYoutubeSearch";
 
 const mapGithubEventToActivity = (event: IGithubEvent): IActivity => {
   let activity: IActivity = {
     content: "",
     origin: "github",
-    timestamp: moment(event.created_at),
+    timestamp: new Date(event.created_at),
     url: ""
   };
 
@@ -53,4 +53,13 @@ const mapGithubEventToActivity = (event: IGithubEvent): IActivity => {
   return activity;
 };
 
-export { mapGithubEventToActivity };
+const mapYoutubeItemToActivity = (item: IYoutubeSearchItem): IActivity => {
+  return {
+    content: `Published: ${item.snippet.title}`,
+    origin: "youtube",
+    timestamp: new Date(item.snippet.publishedAt),
+    url: `https://www.youtube.com/watch?v=${item.id.videoId}`
+  };
+};
+
+export { mapGithubEventToActivity, mapYoutubeItemToActivity };

@@ -20,7 +20,21 @@ I try to keep it up to date with the latest javascript stack. For now it is usin
 - Redux
 - Redux saga
 
----
+## Credentials
+
+The app uses credentials to fetch data from multiple sources, they are set on the `./.env` file that stands on the root folder.  
+The env file look like this:
+```BASH
+REACT_APP_GOOGLE_API_KEY=MY-GOOGLE-API-KEY
+```
+
+### How to get credentials:
+- Google/Youtube api key
+    - Go to the [youtube documentation](https://developers.google.com/youtube/registering_an_application#create_project) and click on `1 - Open the credentials page`
+    - Select or create a project on the top left corner of the page
+    - On `Dashboard`, click on `+ Enable apis and services` search for`YouTube Data API v3` and enable it
+    - On `Credentials` create a new credential of type `API Key`
+    - Set it on `./.env` file
 
 ## Available commands
 

@@ -1,38 +1,35 @@
+import moment from "moment";
 import React from "react";
 
 // Dependencies
-import { faGithub } from "@fortawesome/free-brands-svg-icons";
+import { faGithub, faYoutube } from "@fortawesome/free-brands-svg-icons";
+import { faQuestionCircle } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import IActivity from "../../interfaces/IActivity";
 
 // Styles
 import {
   Activity,
+  ActivityContent,
   ActivityLabel,
-  ActivityLink,
-  ActivityContent
+  ActivityLink
 } from "./ActivityStyles";
 
 const iconMap: any = {
-  github: faGithub
+  github: faGithub,
+  youtube: faYoutube
 };
 
-interface IActivityComponentProps {
-  content: string;
-  origin: string;
-  date: string;
-  url: string;
-}
-
-const ActivityComponent = (props: IActivityComponentProps) => {
+const ActivityComponent = (props: IActivity) => {
   // TODO: Change link to be clicked only on timestamp
   // TODO: Add emoji support on content
   return (
     <Activity>
-      <ActivityLink href={props.url}>
-        <FontAwesomeIcon icon={iconMap[props.origin]} />
+      <ActivityLink href={props.url} target="_blank">
+        <FontAwesomeIcon icon={iconMap[props.origin] || faQuestionCircle} />
         <ActivityContent>
           {props.content}
-          <ActivityLabel> - {props.date}</ActivityLabel>
+          <ActivityLabel> - {moment(props.timestamp).fromNow()}</ActivityLabel>
         </ActivityContent>
       </ActivityLink>
     </Activity>
