@@ -1,7 +1,6 @@
 import { createGlobalStyle } from "styled-components";
 
 const GlobalStyle = createGlobalStyle`
-  @import url('https://fonts.googleapis.com/css?family=Rubik');
 
   body {    
     --primary: #313131;
@@ -15,16 +14,8 @@ const GlobalStyle = createGlobalStyle`
 
     --distance-value: 16px;
 
-    background-color: var(--primary);
-    color: var(--primary-text);
-
-    font-family: 'Rubik', sans-serif;
-
-    #root {
-      height: 800px;
-      max-width: 1070px;
-      margin: 0 auto;
-      margin-top: 64px;
+    * {
+      transition: all 150ms ease-in-out;
     }
   }
 `;

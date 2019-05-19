@@ -17,6 +17,7 @@ interface IActivityListContainerProps {
   activityList: IActivity[];
   error: string[];
   fetching: boolean;
+  theme: AppState["theme"]["theme"];
 }
 
 const ActivityListContainer = (props: IActivityListContainerProps) => {
@@ -28,6 +29,7 @@ const ActivityListContainer = (props: IActivityListContainerProps) => {
     <ActivityListComponent
       fetching={props.fetching}
       activityList={props.activityList}
+      theme={props.theme}
     />
   );
 };
@@ -35,7 +37,8 @@ const ActivityListContainer = (props: IActivityListContainerProps) => {
 const mapStateToProps = (state: AppState) => ({
   activityList: state.activity.activityList,
   error: state.activity.error,
-  fetching: state.activity.fetching
+  fetching: state.activity.fetching,
+  theme: state.theme.theme
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) =>

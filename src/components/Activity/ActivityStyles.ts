@@ -18,7 +18,6 @@ const ActivityLink = styled.a`
 `;
 
 const ActivityContent = styled.p`
-  cursor: pointer;
   color: var(--primary-text);
 `;
 
