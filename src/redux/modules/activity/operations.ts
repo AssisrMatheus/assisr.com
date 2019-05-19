@@ -2,7 +2,12 @@ import IActivity from "../../../interfaces/IActivity";
 import IGithubEvent from "../../../interfaces/IGithubEvent";
 import IYoutubeSearch from "../../../interfaces/IYoutubeSearch";
 import cachedFetch from "../../../utils/cachedFetch";
-import { mapGithubEventToActivity, mapYoutubeItemToActivity } from "./maps";
+import {
+  mapBeatSaberHtmlToList,
+  mapBeatSaberRankingListToActivity,
+  mapGithubEventToActivity,
+  mapYoutubeItemToActivity
+} from "./maps";
 
 const fetchGithubActivity = async (profile: string): Promise<IActivity[]> => {
   const events = await cachedFetch<IGithubEvent[]>(
@@ -31,4 +36,22 @@ const fetchYoutubeVideos = async (channelId: string) => {
   }
 };
 
-export { fetchGithubActivity, fetchYoutubeVideos };
+const fetchBeatSaberScore = async (userId: string) => {
+  let score = await fetch(
+    `${
+      window.location.protocol
+    }//cors-anywhere.herokuapp.com/https://scoresaber.com/u/${userId}&sort=1`
+  );
+
+  score = score.clone();
+
+  if (score) {
+    const pageHtml = await score.text();
+    const list = mapBeatSaberHtmlToList(pageHtml);
+    return list.map(item => mapBeatSaberRankingListToActivity(item, userId));
+  } else {
+    throw new Error("Could not retrieve youtube search");
+  }
+};
+
+export { fetchGithubActivity, fetchYoutubeVideos, fetchBeatSaberScore };

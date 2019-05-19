@@ -11,7 +11,7 @@ const ActivityLink = styled.a`
   svg {
     margin-right: var(--distance-value);
     font-size: 1.5em;
-    path {
+    > path {
       fill: var(--secondary);
     }
   }
@@ -24,4 +24,15 @@ const ActivityContent = styled.p`
 
 const ActivityLabel = styled.span``;
 
-export { Activity, ActivityLink, ActivityLabel, ActivityContent };
+const ActivityIcon = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  svg {
+    max-width: 24px;
+    max-height: 24px;
+  }
+`;
+
+export { Activity, ActivityLink, ActivityLabel, ActivityContent, ActivityIcon };

@@ -9,17 +9,23 @@ import { faQuestionCircle } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import IActivity from "../../interfaces/IActivity";
 
+// Components
+import BeatSaberIcon from "./../Icons/BeatSaberIcon";
+
 // Styles
 import {
   Activity,
   ActivityContent,
+  ActivityIcon,
   ActivityLabel,
   ActivityLink
 } from "./ActivityStyles";
 
 const iconMap: any = {
-  github: faGithub,
-  youtube: faYoutube
+  beatSaber: () => <BeatSaberIcon />,
+  github: () => <FontAwesomeIcon icon={faGithub} />,
+  unknown: () => <FontAwesomeIcon icon={faQuestionCircle} />,
+  youtube: () => <FontAwesomeIcon icon={faYoutube} />
 };
 
 const ActivityComponent = (props: IActivity) => {
@@ -28,7 +34,9 @@ const ActivityComponent = (props: IActivity) => {
   return (
     <Activity>
       <ActivityLink href={props.url} target="_blank">
-        <FontAwesomeIcon icon={iconMap[props.origin] || faQuestionCircle} />
+        <ActivityIcon>
+          {iconMap[props.origin]() || iconMap.unknown()}
+        </ActivityIcon>
         <ActivityContent>
           {retext()
             .use(emoji, { convert: "encode" })

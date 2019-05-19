@@ -8,7 +8,11 @@ import {
 
 import { ACTIVITY_FETCH, IActivityFetchAction } from "./actionTypes";
 
-import { fetchGithubActivity, fetchYoutubeVideos } from "./operations";
+import {
+  fetchBeatSaberScore,
+  fetchGithubActivity,
+  fetchYoutubeVideos
+} from "./operations";
 
 function* workerGithubActivity(action: IActivityFetchAction) {
   try {
@@ -34,8 +38,24 @@ function* workerYoutubeActivity(action: IActivityFetchAction) {
   }
 }
 
+function* workerBeatSaberActivity(action: IActivityFetchAction) {
+  try {
+    const beatSaberActivityList = yield call(
+      fetchBeatSaberScore,
+      "76561198042323311"
+    );
+    yield put(doActivitySuccess(beatSaberActivityList));
+  } catch (ex) {
+    yield put(doActivityFailure(ex.message));
+  }
+}
+
 function* workerFetchActivity(action: IActivityFetchAction) {
-  yield all([workerGithubActivity(action), workerYoutubeActivity(action)]);
+  yield all([
+    workerGithubActivity(action),
+    workerYoutubeActivity(action),
+    workerBeatSaberActivity(action)
+  ]);
   yield put(doActivityFetchFinish());
 }
 
