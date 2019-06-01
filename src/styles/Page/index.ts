@@ -16,11 +16,10 @@ const nes = css`
   font-family: "Press Start 2P", "Rubik", "Times New Roman", Times, serif;
 `;
 
-const Page = styled.div.attrs(props => ({
-  className: props.theme.isNes ? "nes-container is-dark with-title" : ""
-}))`
-  background-color: var(--primary);
+const Page = styled.div`
   color: var(--primary-text);
+  height: 100%;
+  width: 100%;
 
   ${(props: any) => (props.theme.isNes ? nes : normal)}
 `;

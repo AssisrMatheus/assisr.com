@@ -42,20 +42,26 @@ const margin = css<IHelpersProps>`
   ${props =>
     props.marginLeft
       ? `margin-left: calc(var(--distance-value) * ${
-          props.marginBottom === true ? 1 : props.marginBottom
+          props.marginLeft === true ? 1 : props.marginLeft
         }) !important;`
       : ""}
 
   ${props =>
     props.marginVertical
-      ? `margin: calc(var(--distance-value) * ${
+      ? `margin-top: calc(var(--distance-value) * ${
           props.marginVertical === true ? 1 : props.marginVertical
-        }) 0 !important;`
+        }) !important;
+        margin-bottom: calc(var(--distance-value) * ${
+          props.marginVertical === true ? 1 : props.marginVertical
+        }) !important;`
       : ""}
 
   ${props =>
     props.marginHorizontal
-      ? `margin: 0 calc(var(--distance-value) * ${
+      ? `margin-left: calc(var(--distance-value) * ${
+          props.marginHorizontal === true ? 1 : props.marginHorizontal
+        }) !important;
+        margin-right: calc(var(--distance-value) * ${
           props.marginHorizontal === true ? 1 : props.marginHorizontal
         }) !important;`
       : ""}
@@ -92,20 +98,26 @@ const padding = css<IHelpersProps>`
   ${props =>
     props.paddingLeft
       ? `padding-left: calc(var(--distance-value) * ${
-          props.paddingBottom === true ? 1 : props.paddingBottom
+          props.paddingLeft === true ? 1 : props.paddingLeft
         }) !important;`
       : ""}
 
   ${props =>
     props.paddingVertical
-      ? `padding: calc(var(--distance-value) * ${
+      ? `padding-top: calc(var(--distance-value) * ${
           props.paddingVertical === true ? 1 : props.paddingVertical
-        }) 0 !important;`
+        });
+        padding-bottom: calc(var(--distance-value) * ${
+          props.paddingVertical === true ? 1 : props.paddingVertical
+        }) !important;`
       : ""}
 
   ${props =>
     props.paddingHorizontal
-      ? `padding: 0 calc(var(--distance-value) * ${
+      ? `padding-left: calc(var(--distance-value) * ${
+          props.paddingHorizontal === true ? 1 : props.paddingHorizontal
+        }) !important;
+        padding-right: calc(var(--distance-value) * ${
           props.paddingHorizontal === true ? 1 : props.paddingHorizontal
         }) !important;`
       : ""}
@@ -118,11 +130,11 @@ const padding = css<IHelpersProps>`
 `;
 
 const helpers = css<IHelpersProps>`
-  ${margin}
   ${(props: any) => (props.noMargin ? `margin: 0 !important;` : "")}
+  ${margin}
 
-  ${padding}
   ${(props: any) => (props.noPadding ? `padding: 0 !important;` : "")}
+  ${padding}
 `;
 
 export default helpers;

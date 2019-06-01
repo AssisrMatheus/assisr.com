@@ -1,11 +1,22 @@
 import styled from "styled-components";
 
 const ThemeSelector = styled.a`
-  width: 80px;
-  height: 80px;
+  width: 60px;
+  height: 40px;
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: transform 70ms ease-in-out;
+  margin-left: calc(var(--distance-value) / 2);
+  margin-top: calc(var(--distance-value) / 2);
+
+  img {
+    height: 100%;
+  }
+
+  &:hover {
+    transform: scale(1.3);
+  }
 `;
 
 const Controller = styled.a`
@@ -15,10 +26,6 @@ const Controller = styled.a`
   image-rendering: pixelated;
   width: 60px;
   height: 40px;
-
-  &:hover {
-    transform: scale(1.3);
-  }
 
   &::before {
     position: absolute;

@@ -1,7 +1,8 @@
 import styled from "styled-components";
 
-const ActivityTitle = styled.h2`
-  text-transform: uppercase;
+const ActivityListStyles = styled.div`
+  background-color: var(--tertiary);
+  padding-top: var(--distance-value);
 `;
 
-export { ActivityTitle };
+export { ActivityListStyles };

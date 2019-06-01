@@ -1,4 +1,5 @@
 {
   "activity": "Atividades",
-  "loading": "Carregando"
+  "loading": "Carregando",
+  "activityFetchSubtitle": "Carregado em tempo real com cache de 10 minutos"
 }
