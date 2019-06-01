@@ -36,11 +36,11 @@ const fetchYoutubeVideos = async (channelId: string) => {
   }
 };
 
-const fetchBeatSaberScore = async (userId: string) => {
+const fetchBeatSaberScore = async (userId: string, sorting: number = 1) => {
   let score = await fetch(
     `${
       window.location.protocol
-    }//cors-anywhere.herokuapp.com/https://scoresaber.com/u/${userId}&sort=1`
+    }//cors-anywhere.herokuapp.com/https://scoresaber.com/u/${userId}&sort=${sorting}`
   );
 
   score = score.clone();
@@ -48,7 +48,9 @@ const fetchBeatSaberScore = async (userId: string) => {
   if (score) {
     const pageHtml = await score.text();
     const list = mapBeatSaberHtmlToList(pageHtml);
-    return list.map(item => mapBeatSaberRankingListToActivity(item, userId));
+    return list.map(item =>
+      mapBeatSaberRankingListToActivity(item, userId, sorting)
+    );
   } else {
     throw new Error("Could not retrieve youtube search");
   }

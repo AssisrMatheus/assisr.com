@@ -21,6 +21,10 @@ const Page = styled.div`
   height: 100%;
   width: 100%;
 
+  background-color: var(--tertiary);
+  min-height: 100vh;
+  min-width: 98vw;
+
   ${(props: any) => (props.theme.isNes ? nes : normal)}
 `;
 

@@ -1,3 +1,5 @@
+import { faSyncAlt } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 import { FormattedMessage } from "react-intl";
 import { AppState } from "../../redux/reducers";
@@ -49,9 +51,9 @@ const ActivityListComponent = (props: IActivityListComponent) => (
         </Flex>
       )}
       {props.fetching && (
-        <div>
-          <FormattedMessage id="loading" />
-        </div>
+        <Flex align={"center"} content={"center"}>
+          <FontAwesomeIcon spin size="2x" icon={faSyncAlt} />
+        </Flex>
       )}
       {props.activityList.map((item, i) => (
         <ActivityComponent key={`${item.content}-${i}`} {...item} />

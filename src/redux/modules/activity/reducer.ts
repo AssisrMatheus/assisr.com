@@ -21,7 +21,7 @@ export interface IActivityState {
 const initialState: IActivityState = {
   activityList: [],
   error: [],
-  fetching: false
+  fetching: true
 };
 
 export const reducer = createReducer(initialState, {

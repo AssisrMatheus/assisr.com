@@ -29,7 +29,7 @@ const mapGithubEventToActivity = (event: IGithubEvent): IActivity => {
     activity = {
       ...activity,
       content: `${action} watching ${event.repo.name}`,
-      url: event.repo.url
+      url: `https://github.com/${event.repo.name}`
     };
   } else if (event.type === "CreateEvent") {
     activity = {
@@ -74,7 +74,8 @@ const mapBeatSaberHtmlToList = (html: string): HTMLElement[] => {
 
 const mapBeatSaberRankingListToActivity = (
   row: HTMLElement,
-  userId: string
+  userId: string,
+  sorting: number = 1
 ): IActivity => {
   // The rank number on the song
   const rank: HTMLElement | null = row.querySelector("th.rank");
@@ -127,7 +128,7 @@ const mapBeatSaberRankingListToActivity = (
     content,
     origin: "beatSaber",
     timestamp: new Date(timestamp ? timestamp.title : Date.now()),
-    url: `https://scoresaber.com/u/${userId}`
+    url: `https://scoresaber.com/u/${userId}&sort=${sorting}`
   };
 };
 

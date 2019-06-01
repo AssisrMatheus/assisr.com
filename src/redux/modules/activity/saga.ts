@@ -40,11 +40,16 @@ function* workerYoutubeActivity(action: IActivityFetchAction) {
 
 function* workerBeatSaberActivity(action: IActivityFetchAction) {
   try {
-    const beatSaberActivityList = yield call(
-      fetchBeatSaberScore,
-      "76561198042323311"
+    const beatSaberActivityList = yield all([
+      call(fetchBeatSaberScore, "76561198042323311", 1),
+      call(fetchBeatSaberScore, "76561198042323311", 2)
+    ]);
+    yield put(
+      doActivitySuccess([
+        ...beatSaberActivityList[0],
+        ...beatSaberActivityList[1]
+      ])
     );
-    yield put(doActivitySuccess(beatSaberActivityList));
   } catch (ex) {
     yield put(doActivityFailure(ex.message));
   }
