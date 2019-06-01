@@ -2,6 +2,7 @@ import React from "react";
 
 // Redux
 import { connect } from "react-redux";
+import LanguageSelectorContainer from "../../components/LanguageSelector/LanguageSelectorContainer";
 import { AppState } from "../../redux/reducers";
 
 // Components
@@ -12,6 +13,7 @@ import ThemeSelectorContainer from "./../../components/ThemeSelector/ThemeSelect
 
 // Styles
 import Container from "./../../styles/Container";
+import Flex from "./../../styles/Flex";
 import Page from "./../../styles/Page";
 import { ContentDivider } from "./HomeStyles";
 
@@ -25,7 +27,10 @@ interface IAppProps {
 
 const Home = (props: IAppProps) => (
   <Page>
-    <ThemeSelectorContainer />
+    <Flex align={"center"} content={"flex-end"}>
+      <LanguageSelectorContainer />
+      <ThemeSelectorContainer />
+    </Flex>
     <Container padding>
       {props.theme === "nes" && <p className="title">Matheus Assis Rios</p>}
       <ContentDivider>

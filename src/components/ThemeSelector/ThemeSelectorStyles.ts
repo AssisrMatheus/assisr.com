@@ -6,7 +6,6 @@ const ThemeSelector = styled.a`
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 0 1px 0 auto;
 `;
 
 const Controller = styled.a`

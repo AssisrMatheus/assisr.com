@@ -1,5 +1,8 @@
 import React from "react";
 
+// Locales
+import { FormattedMessage } from "react-intl";
+
 //  Redux
 import { AppState } from "../../redux/reducers";
 
@@ -22,11 +25,19 @@ interface IActivityListComponent {
 const ActivityListComponent = (props: IActivityListComponent) => (
   <Container marginTop={2}>
     {props.theme === "nes" ? (
-      <p className="title">Activity</p>
+      <p className="title">
+        <FormattedMessage id="activity" description="Activities header title" />
+      </p>
     ) : (
-      <ActivityTitle>Activity</ActivityTitle>
+      <ActivityTitle>
+        <FormattedMessage id="activity" description="Activities header title" />
+      </ActivityTitle>
     )}
-    {props.fetching && <div>LOADING</div>}
+    {props.fetching && (
+      <div>
+        <FormattedMessage id="loading" />
+      </div>
+    )}
     {props.activityList.map((item, i) => (
       <ActivityComponent key={`${item.content}-${i}`} {...item} />
     ))}
