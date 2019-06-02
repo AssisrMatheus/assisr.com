@@ -2,8 +2,6 @@ import styled from "styled-components";
 import Flex from "../../styles/Flex";
 import helpers from "../../styles/helpers";
 
-import stars from "../../static/img/starrs.webp";
-
 const HeaderStyles = styled.div`
   position: relative;
   background-color: var(--primary-dark);
@@ -16,8 +14,9 @@ const HeaderStyles = styled.div`
     height: 100%;
     display: block;
     z-index: 2;
-    filter: brightness(0.6) blur(4px);
-    background: url(${stars}) center center / cover no-repeat;
+    filter: brightness(46%) blur(4px);
+    background: url("https://cdn-images-1.medium.com/max/1600/0*4xRkrbfO8OGAyzP4.")
+      center center / cover no-repeat;
   }
 `;
 const HeaderContent = styled.div`

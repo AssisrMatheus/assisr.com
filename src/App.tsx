@@ -1,3 +1,6 @@
+import moment from "moment";
+import momentPt from "moment/locale/pt-br";
+import momentEn from "moment/locale/es-us";
 import React from "react";
 import { addLocaleData, IntlProvider } from "react-intl";
 import en from "react-intl/locale-data/en";
@@ -21,6 +24,11 @@ const currentTheme = (theme: IAppProps["theme"]) => ({
   isNes: theme === "nes"
 });
 
+const momentLocales: any = {
+  en: { code: "en-us", locale: momentEn },
+  pt: { code: "pt-br", locale: momentPt }
+};
+
 const App = (props: IAppProps) => {
   let language = props.language;
   let translations = messages[language];
@@ -32,6 +40,9 @@ const App = (props: IAppProps) => {
     language = "en";
     translations = messages.en;
   }
+
+  const momentLocale = momentLocales[language];
+  console.log(moment.locale(momentLocale.code, momentLocale.locale));
 
   return (
     <div className="App">
