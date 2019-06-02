@@ -55,7 +55,7 @@ interface IGithubIssue {
   title: string;
   user: IGithubUser;
   labels: string[];
-  state: "open";
+  state: "open" | "closed";
   locked: boolean;
   assignee: null;
   assignees: any[];
@@ -68,9 +68,29 @@ interface IGithubIssue {
   body: string;
 }
 
-interface IGithubPayload {
+interface IGithubComment {
+  url: string;
+  html_url: string;
+  issue_url: string;
+  id: number;
+  node_id: string;
+  user: IGithubUser;
+  created_at: string;
+  updated_at: string;
+  author_association: string;
+  body: string;
+}
+
+export interface IGithubPayload {
   ref: string;
-  action: string;
+  action:
+    | "started"
+    | "stopped"
+    | "opened"
+    | "reopened"
+    | "closed"
+    | "created"
+    | string;
 
   // PushEvent
   push_id: number;
@@ -88,6 +108,9 @@ interface IGithubPayload {
 
   // Issues Event
   issue: IGithubIssue;
+
+  // IssuesComment Event
+  comment: IGithubComment;
 }
 
 interface IGithubOrg {
@@ -100,7 +123,12 @@ interface IGithubOrg {
 
 export default interface IGithubEvent {
   id: string;
-  type: "PushEvent" | "WatchEvent" | "CreateEvent" | "IssuesEvent";
+  type:
+    | "PushEvent"
+    | "WatchEvent"
+    | "CreateEvent"
+    | "IssuesEvent"
+    | "IssueCommentEvent";
   actor: IGithubActor;
   repo: IGithubRepo;
   payload: IGithubPayload;

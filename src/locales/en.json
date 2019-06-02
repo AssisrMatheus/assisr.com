@@ -1,5 +1,20 @@
 {
   "activity": "Activity",
   "loading": "Loading",
-  "activityFetchSubtitle": "Fetched in real time with a cache of 10 minutes"
+  "activityFetchSubtitle": "Fetched in real time with a cache of 10 minutes",
+  "GitHub.PushEvent": "Committed at {repositoryPath}: {commitMessage}",
+  "GitHub.WatchEvent": "{actionType} watching {repositoryPath}",
+  "GitHub.CreateEvent": "Created a {actionType} at {repositoryPath}",
+  "GitHub.IssuesEvent": "{actionType} issue #{issueNumber}: {issueTitle}",
+  "GitHub.IssueCommentEvent": "{actionType} comment on {issueNumber}: {issueTitle}. {comment}",
+  "GitHub.started": "Started",
+  "GitHub.stopped": "Stopped",
+  "GitHub.opened": "Opened",
+  "GitHub.reopened": "Reopened",
+  "GitHub.closed": "Closed",
+  "GitHub.created": "Created",
+  "GitHub.branch": "branch",
+  "GitHub.repository": "repository",
+  "Youtube.PublishEvent": "Published: {videoTitle}",
+  "BeatSaber.ScoredEvent": "Scored {rank} in {songTitle} on {difficulty} [{ppScore} - {additionalInfo}]"
 }

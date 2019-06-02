@@ -36,7 +36,7 @@ const ActivityListComponent = (props: IActivityListComponent) => (
         </>
       ) : (
         <Flex marginBottom align={"baseline"}>
-          <Text title light italic>
+          <Text isTitle light italic>
             <FormattedMessage
               id="activity"
               description="Activities header title"
@@ -55,9 +55,14 @@ const ActivityListComponent = (props: IActivityListComponent) => (
           <FontAwesomeIcon spin size="2x" icon={faSyncAlt} />
         </Flex>
       )}
-      {props.activityList.map((item, i) => (
-        <ActivityComponent key={`${item.content}-${i}`} {...item} />
-      ))}
+      {props.activityList
+        .filter(x => x.content)
+        .map(item => (
+          <ActivityComponent
+            key={`${item.origin}-${item.timestamp.toISOString()}-${item.url}`}
+            {...item}
+          />
+        ))}
     </Container>
   </ActivityListStyles>
 );

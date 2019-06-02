@@ -23,7 +23,11 @@ interface IActivityListContainerProps {
 const ActivityListContainer = (props: IActivityListContainerProps) => {
   useEffect(() => {
     if (!props.activityList || props.activityList.length < 1) {
-      props.doActivityFetch("assisrmatheus", "UCwtuk0k5hX_HWWSidYSIvLg");
+      props.doActivityFetch(
+        "assisrmatheus",
+        "UCwtuk0k5hX_HWWSidYSIvLg",
+        "76561198042323311"
+      );
     }
   }, []);
 

@@ -13,8 +13,10 @@ import {
 
 export const doActivityFetch = (
   githubProfileName: string,
-  youtubeChannelId: string
+  youtubeChannelId: string,
+  beatSaberUserId: string
 ): IActivityFetchAction => ({
+  beatSaberUserId,
   githubProfileName,
   type: ACTIVITY_FETCH,
   youtubeChannelId

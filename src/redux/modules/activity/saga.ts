@@ -41,8 +41,8 @@ function* workerYoutubeActivity(action: IActivityFetchAction) {
 function* workerBeatSaberActivity(action: IActivityFetchAction) {
   try {
     const beatSaberActivityList = yield all([
-      call(fetchBeatSaberScore, "76561198042323311", 1),
-      call(fetchBeatSaberScore, "76561198042323311", 2)
+      call(fetchBeatSaberScore, action.beatSaberUserId, 1),
+      call(fetchBeatSaberScore, action.beatSaberUserId, 2)
     ]);
     yield put(
       doActivitySuccess([

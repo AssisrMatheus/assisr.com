@@ -52,7 +52,7 @@ const fetchBeatSaberScore = async (userId: string, sorting: number = 1) => {
       mapBeatSaberRankingListToActivity(item, userId, sorting)
     );
   } else {
-    throw new Error("Could not retrieve youtube search");
+    throw new Error("Could not retrieve beatSaber scores");
   }
 };
 

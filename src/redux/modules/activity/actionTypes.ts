@@ -8,6 +8,7 @@ export const ACTIVITY_FETCH_FINISH = "activity/ACTIVITY_FETCH_FINISH";
 
 export interface IActivityFetchAction {
   type: typeof ACTIVITY_FETCH;
+  beatSaberUserId: string;
   githubProfileName: string;
   youtubeChannelId: string;
 }

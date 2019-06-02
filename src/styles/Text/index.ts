@@ -15,7 +15,7 @@ const Text = styled.div<IText | any>`
   ${props => props.bold && "font-weight: 600;"}
   ${props => props.light && "font-weight: 300;"}
   ${props => props.uppercase && "text-transform: uppercase;"}
-  ${props => props.title && "font-size: 2.5em;"}
+  ${props => props.isTitle && "font-size: 2.5em;"}
   ${helpers}
 `;
 

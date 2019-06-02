@@ -1,62 +1,85 @@
+import retext from "retext";
+import emoji from "retext-emoji";
 import IActivity from "../../../interfaces/IActivity";
 import IGithubEvent from "../../../interfaces/IGithubEvent";
 import { IYoutubeSearchItem } from "../../../interfaces/IYoutubeSearch";
 
+const retextEmoji = retext().use(emoji, { convert: "encode" });
+
 const mapGithubEventToActivity = (event: IGithubEvent): IActivity => {
-  let activity: IActivity = {
-    content: "",
-    origin: "github",
-    timestamp: new Date(event.created_at),
-    url: ""
+  const activity: IActivity = {
+    event: event.type,
+    origin: "GitHub",
+    timestamp: new Date(event.created_at)
   };
 
   if (event.type === "PushEvent") {
     const commits = event.payload.commits;
     const commit = commits[commits.length - 1];
 
-    const url = `https://github.com/${event.repo.name}/commit/${commit.sha}`;
-
-    activity = {
+    return {
       ...activity,
-      content: `Committed at ${event.repo.name}: ${commit.message}`,
-      url
+      content: {
+        commitMessage: retextEmoji.processSync(commit.message).toString(),
+        repositoryPath: event.repo.name
+      },
+      url: `https://github.com/${event.repo.name}/commit/${commit.sha}`
     };
   } else if (event.type === "WatchEvent") {
-    const action =
-      event.payload.action.substr(0, 1).toLocaleUpperCase() +
-      event.payload.action.substr(1, event.payload.action.length);
-
-    activity = {
+    return {
       ...activity,
-      content: `${action} watching ${event.repo.name}`,
+      content: {
+        actionType: event.payload.action,
+        repositoryPath: event.repo.name
+      },
       url: `https://github.com/${event.repo.name}`
     };
   } else if (event.type === "CreateEvent") {
-    activity = {
+    return {
       ...activity,
-      content: `Created ${event.payload.ref ? event.payload.ref : ""} ${
-        event.payload.ref_type
-      } at ${event.repo.name}(${event.payload.description})`,
+      content: {
+        actionType: event.payload.ref_type,
+        branchName: event.payload.ref,
+        description: retextEmoji
+          .processSync(event.payload.description)
+          .toString(),
+        repositoryPath: event.repo.name
+      },
       url: `https://github.com/${event.repo.name}`
     };
   } else if (event.type === "IssuesEvent") {
-    const action =
-      event.payload.action.substr(0, 1).toLocaleUpperCase() +
-      event.payload.action.substr(1, event.payload.action.length);
-    activity = {
+    return {
       ...activity,
-      content: `${action} issue ${event.payload.issue.title}`,
+      content: {
+        actionType: event.payload.action,
+        issueNumber: event.payload.issue.number,
+        issueTitle: event.payload.issue.title
+      },
       url: event.payload.issue.html_url
     };
+  } else if (event.type === "IssueCommentEvent") {
+    return {
+      ...activity,
+      content: {
+        actionType: event.payload.action,
+        comment: retextEmoji
+          .processSync(event.payload.comment.body.substr(0, 20))
+          .toString(),
+        issueNumber: event.payload.issue.number,
+        issueTitle: event.payload.issue.title
+      },
+      url: event.payload.comment.html_url
+    };
+  } else {
+    return activity;
   }
-
-  return activity;
 };
 
 const mapYoutubeItemToActivity = (item: IYoutubeSearchItem): IActivity => {
   return {
-    content: `Published: ${item.snippet.title}`,
-    origin: "youtube",
+    content: { videoTitle: item.snippet.title },
+    event: "PublishEvent",
+    origin: "Youtube",
     timestamp: new Date(item.snippet.publishedAt),
     url: `https://www.youtube.com/watch?v=${item.id.videoId}`
   };
@@ -118,15 +141,16 @@ const mapBeatSaberRankingListToActivity = (
 
   const songName = songAndDifficultyString.replace(difficultyString, "");
 
-  const content = `Scored ${rank ? rank.innerText.trim() : ""}: ${
-    songName ? songName : "a song"
-  }${difficultyString ? `on ${difficultyString} ` : ""}[${
-    ppScore ? `${ppScore.innerText}pp` : ""
-  }${additionalScore ? ` - ${additionalScore.innerText}` : ""}]`;
-
   return {
-    content,
-    origin: "beatSaber",
+    content: {
+      additionalInfo: additionalScore ? additionalScore.innerText : "",
+      difficulty: difficultyString ? difficultyString : "",
+      ppScore: ppScore ? `${ppScore.innerText}pp` : "",
+      rank: rank ? rank.innerText.trim() : "",
+      songTitle: songName ? songName : "a song"
+    },
+    event: "ScoredEvent",
+    origin: "BeatSaber",
     timestamp: new Date(timestamp ? timestamp.title : Date.now()),
     url: `https://scoresaber.com/u/${userId}&sort=${sorting}`
   };
