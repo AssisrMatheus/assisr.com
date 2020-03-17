@@ -25,3 +25,7 @@ yarn develop
 ```
 
 4. Edit Page 2 in `src/pages/page-2.mdx`
+
+## Refs:
+
+https://www.arden.nl/setting-up-a-gatsby-js-starter-with-type-script-es-lint-prettier-and-pre-commit-hooks
