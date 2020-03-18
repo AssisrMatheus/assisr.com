@@ -16,6 +16,24 @@ module.exports = {
       options: {
         defaultLayouts: { default: path.resolve('./src/components/layout.tsx') }
       }
+      // extensions: ['.mdx', '.md'],
+      // gatsbyRemarkPlugins: [
+      //   // {
+      //   //   resolve: `gatsby-remark-images`,
+      //   //   options: {
+      //   //     maxWidth: 590
+      //   //   }
+      //   // },
+      //   // {
+      //   //   resolve: `gatsby-remark-responsive-iframe`,
+      //   //   options: {
+      //   //     wrapperStyle: `margin-bottom: 1.0725rem`
+      //   //   }
+      //   // },
+      //   // `gatsby-remark-prismjs`,
+      //   // `gatsby-remark-copy-linked-files`,
+      //   // `gatsby-remark-smartypants`
+      // ]
     },
     'gatsby-plugin-react-helmet',
     {
@@ -32,8 +50,26 @@ module.exports = {
         path: `${__dirname}/src/pages`
       }
     },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `blog`,
+        path: `${__dirname}/src/pages/blog`
+      }
+    },
     'gatsby-transformer-sharp', // Image transformations
     'gatsby-plugin-sharp', // Image transformations
+    {
+      resolve: 'gatsby-plugin-i18n',
+      options: {
+        langKeyDefault: 'en',
+        langKeyForNull: 'en',
+        useLangKeyLayout: false
+        // prefixDefault: false
+      }
+    },
+    // this (optional) plugin enables Progressive Web App + Offline functionality
+    // To learn more, visit: https://gatsby.app/offline
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
@@ -46,15 +82,7 @@ module.exports = {
         icon: 'src/images/gatsby-icon.png' // This path is relative to the root of the site.
       }
     },
-    {
-      resolve: 'gatsby-plugin-i18n',
-      options: {
-        langKeyDefault: 'en',
-        useLangKeyLayout: false
-      }
-    },
-    // this (optional) plugin enables Progressive Web App + Offline functionality
-    // To learn more, visit: https://gatsby.app/offline
     'gatsby-plugin-offline'
+    // "gatsby-plugin-feed-mdx"
   ]
 };
