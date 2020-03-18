@@ -5,7 +5,13 @@
   "homepage": "https://assisr.com",
   "description": "My personal website",
   "author": "Matheus Assis Rios <assisr.matheus@gmail.com>",
-  "dependencies": {},
+  "dependencies": {
+    "gatsby": "^2.19.45",
+    "gatsby-plugin-typescript": "^2.2.5",
+    "gatsby-plugin-typescript-checker": "^1.1.1",
+    "react": "^16.13.0",
+    "react-dom": "^16.13.0"
+  },
   "keywords": [
     "gatsby"
   ],
@@ -34,7 +40,8 @@
     "eslint-plugin-react": "^7.19.0",
     "husky": "^4.2.3",
     "lint-staged": "^10.0.8",
-    "prettier": "prettier/prettier"
+    "prettier": "prettier/prettier",
+    "typescript": "^3.8.3"
   },
   "repository": {
     "type": "git",
