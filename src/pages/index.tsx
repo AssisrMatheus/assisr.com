@@ -1,9 +1,8 @@
-import React from 'react';
 import { graphql, Link } from 'gatsby';
-import styled from 'styled-components';
 import Img from 'gatsby-image';
+import React from 'react';
+import styled from 'styled-components';
 import HomeLayout from '../components/homeLayout';
-import Dump from '../components/dump';
 
 const IndexWrapper = styled.main``;
 const PostWrapper = styled.div``;
@@ -68,7 +67,6 @@ type IndexProps = {
 const Index: React.FC<IndexProps> = ({ data }) => {
   return (
     <HomeLayout>
-      <Dump data={data} />
       <IndexWrapper>
         {data.allMdx.nodes.map(({ id, excerpt, frontmatter, fields }) => (
           <PostWrapper key={id}>

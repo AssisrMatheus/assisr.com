@@ -5,6 +5,12 @@ type MetadataQuery = {
     siteMetadata: {
       title: string;
       description: string;
+      image: string;
+      siteUrl: string;
+      siteLanguage: string;
+      siteLocale: string;
+      twitterUsername: string;
+      authorName: string;
     };
   };
 };
@@ -15,8 +21,14 @@ export default () => {
       query SITE_METADATA_QUERY {
         site {
           siteMetadata {
-            title
             description
+            title
+            image
+            siteUrl
+            siteLanguage
+            siteLocale
+            twitterUsername
+            authorName
           }
         }
       }
