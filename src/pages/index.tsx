@@ -1,12 +1,16 @@
 import React from 'react';
 import { graphql, Link } from 'gatsby';
 import styled from 'styled-components';
+import Img from 'gatsby-image';
 import HomeLayout from '../components/homeLayout';
 import Dump from '../components/dump';
 
 const IndexWrapper = styled.main``;
-
 const PostWrapper = styled.div``;
+
+const Image = styled(Img)`
+  border-radius: 5px;
+`;
 
 export const query = graphql`
   query SITE_INDEX_QUERY {
@@ -19,7 +23,15 @@ export const query = graphql`
         excerpt(pruneLength: 250)
         frontmatter {
           title
-          date
+          date(formatString: "YYYY MMMM Do")
+          cover {
+            publicURL
+            childImageSharp {
+              sizes(maxWidth: 2000, traceSVG: { color: "#639" }) {
+                ...GatsbyImageSharpSizes_tracedSVG
+              }
+            }
+          }
         }
         fields {
           slug
@@ -38,6 +50,12 @@ type IndexProps = {
         frontmatter: {
           title: string;
           date: string;
+          cover: {
+            publicURL: string;
+            childImageSharp: {
+              sizes: any; // FluidObject
+            };
+          };
         };
         fields: {
           slug: string;
@@ -55,6 +73,9 @@ const Index: React.FC<IndexProps> = ({ data }) => {
         {data.allMdx.nodes.map(({ id, excerpt, frontmatter, fields }) => (
           <PostWrapper key={id}>
             <Link to={fields.slug}>
+              {!!frontmatter.cover && (
+                <Image sizes={frontmatter.cover.childImageSharp.sizes} />
+              )}
               <h1>{frontmatter.title}</h1>
               <p>{frontmatter.date}</p>
               <p>{excerpt}</p>
