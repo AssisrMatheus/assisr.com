@@ -1,16 +1,20 @@
 {
   "name": "assisr.com",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "private": false,
   "homepage": "https://assisr.com",
   "description": "My personal website",
   "author": "Matheus Assis Rios <assisr.matheus@gmail.com>",
   "dependencies": {
-    "gatsby": "^2.19.45",
-    "gatsby-plugin-typescript": "^2.2.5",
-    "gatsby-plugin-typescript-checker": "^1.1.1",
-    "react": "^16.13.0",
-    "react-dom": "^16.13.0"
+    "@mdx-js/mdx": "1.5.7",
+    "@mdx-js/react": "1.5.7",
+    "gatsby": "2.19.45",
+    "gatsby-plugin-mdx": "1.0.83",
+    "gatsby-plugin-typescript": "2.2.5",
+    "gatsby-plugin-typescript-checker": "1.1.1",
+    "gatsby-source-filesystem": "2.1.56",
+    "react": "16.13.0",
+    "react-dom": "16.13.0"
   },
   "keywords": [
     "gatsby"
@@ -24,24 +28,25 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint --ignore-path .gitignore . --ext ts --ext tsx --ext js --ext jsx --ext mdx",
     "lint:fix": "yarn lint --fix",
-    "type-check": "tsc",
-    "type-check:watch": "yarn type-check -- --watch"
+    "type-check": "tsc --noEmit",
+    "type-check:watch": "yarn type-check -- --watch",
+    "check-commit": "yarn type-check && lint-staged"
   },
   "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "^2.24.0",
-    "@typescript-eslint/parser": "^2.24.0",
-    "eslint": "^6.8.0",
-    "eslint-config-airbnb": "^18.1.0",
-    "eslint-config-prettier": "^6.10.0",
-    "eslint-plugin-filenames": "^1.3.2",
-    "eslint-plugin-import": "^2.20.1",
-    "eslint-plugin-mdx": "^1.6.8",
-    "eslint-plugin-prettier": "^3.1.2",
-    "eslint-plugin-react": "^7.19.0",
-    "husky": "^4.2.3",
-    "lint-staged": "^10.0.8",
+    "@typescript-eslint/eslint-plugin": "2.24.0",
+    "@typescript-eslint/parser": "2.24.0",
+    "eslint": "6.8.0",
+    "eslint-config-airbnb": "18.1.0",
+    "eslint-config-prettier": "6.10.0",
+    "eslint-plugin-filenames": "1.3.2",
+    "eslint-plugin-import": "2.20.1",
+    "eslint-plugin-mdx": "1.6.8",
+    "eslint-plugin-prettier": "3.1.2",
+    "eslint-plugin-react": "7.19.0",
+    "husky": "4.2.3",
+    "lint-staged": "10.0.8",
     "prettier": "prettier/prettier",
-    "typescript": "^3.8.3"
+    "typescript": "3.8.3"
   },
   "repository": {
     "type": "git",

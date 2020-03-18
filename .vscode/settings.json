@@ -11,14 +11,14 @@
       "language": "javascriptreact",
       "autoFix": true
     },
-    {
-      "language": "markdown",
-      "autoFix": true
-    },
-    {
-      "language": "mdx",
-      "autoFix": true
-    },
+    // {
+    //   "language": "markdown",
+    //   "autoFix": true
+    // },
+    // {
+    //   "language": "mdx",
+    //   "autoFix": true
+    // },
     {
       "language": "typescript",
       "autoFix": true
