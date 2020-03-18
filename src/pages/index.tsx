@@ -1,6 +1,7 @@
 import React from 'react';
 import { graphql } from 'gatsby';
 import HomeLayout from '../components/homeLayout';
+import Dump from '../components/dump';
 
 export const query = graphql`
   query SITE_INDEX_QUERY {
@@ -14,6 +15,9 @@ export const query = graphql`
         frontmatter {
           title
           date
+        }
+        fields {
+          slug
         }
       }
     }
@@ -38,6 +42,7 @@ type IndexProps = {
 const Index: React.FC<IndexProps> = ({ data }) => {
   return (
     <HomeLayout>
+      <Dump data={data} />
       {data.allMdx.nodes.map(({ excerpt, frontmatter }) => (
         <>
           <h1>{frontmatter.title}</h1>
