@@ -34,6 +34,7 @@ export const query = graphql`
         }
         fields {
           slug
+          locale
         }
       }
     }
@@ -58,6 +59,7 @@ type IndexProps = {
         };
         fields: {
           slug: string;
+          locale: string;
         };
       }[];
     };
@@ -70,7 +72,7 @@ const Index: React.FC<IndexProps> = ({ data }) => {
       <IndexWrapper>
         {data.allMdx.nodes.map(({ id, excerpt, frontmatter, fields }) => (
           <PostWrapper key={id}>
-            <Link to={fields.slug}>
+            <Link to={`${fields.locale}/${fields.slug}`}>
               {!!frontmatter.cover && (
                 <Image sizes={frontmatter.cover.childImageSharp.sizes} />
               )}

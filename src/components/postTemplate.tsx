@@ -30,6 +30,7 @@ export const query = graphql`
       excerpt
       fields {
         slug
+        locale
       }
     }
   }
@@ -38,6 +39,8 @@ export const query = graphql`
 type PagePost = {
   fields: {
     slug: string;
+    locale: string;
+    idPath: string;
   };
   frontmatter: {
     title: string;
@@ -61,6 +64,7 @@ type PostTemplateProps = {
       excerpt: string;
       fields: {
         slug: string;
+        locale: string;
       };
     };
   };
@@ -68,6 +72,7 @@ type PostTemplateProps = {
   pageContext: {
     previous?: PagePost;
     next?: PagePost;
+    alternative?: PagePost;
   };
 };
 
@@ -82,7 +87,7 @@ const PostTemplate: React.FC<PostTemplateProps> = ({ data, pageContext }) => {
   } = useSiteMetadata();
   const { frontmatter, body, fields, excerpt } = data.mdx;
   const { title, date, cover } = frontmatter;
-  const { previous, next } = pageContext;
+  const { previous, next, alternative } = pageContext;
   return (
     <PostLayout>
       <SEO
@@ -91,26 +96,34 @@ const PostTemplate: React.FC<PostTemplateProps> = ({ data, pageContext }) => {
         image={
           cover === null ? `${siteUrl}${image}` : `${siteUrl}${cover.publicURL}`
         }
-        pathname={`${siteUrl}${fields.slug}`}
-        siteLanguage={siteLanguage}
-        siteLocale={siteLocale}
+        pathname={`${siteUrl}${fields.locale}/${fields.slug}`}
+        siteLanguage={fields.locale || siteLanguage}
+        siteLocale={fields.locale || siteLocale}
         twitterUsername={twitterUsername}
         author={authorName}
-        article
+        // article
         publishedDate={date}
         modifiedDate={new Date(Date.now()).toISOString()}
       />
       {!!cover && <Image sizes={cover.childImageSharp.sizes} />}
+      {alternative && (
+        <p>
+          Alternative:{' '}
+          <Link to={`${alternative.fields.locale}/${alternative.fields.slug}`}>
+            {alternative.frontmatter.title}
+          </Link>
+        </p>
+      )}
       <h1>{title}</h1>
       <p>{date}</p>
       <MDXRenderer>{body}</MDXRenderer>
       {previous && (
-        <Link to={previous.fields.slug}>
+        <Link to={`${previous.fields.locale}/${previous.fields.slug}`}>
           <p>{previous.frontmatter.title}</p>
         </Link>
       )}
       {next && (
-        <Link to={next.fields.slug}>
+        <Link to={`${next.fields.locale}/${next.fields.slug}`}>
           <p>{next.frontmatter.title}</p>
         </Link>
       )}

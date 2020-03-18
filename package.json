@@ -15,6 +15,7 @@
   },
   "scripts": {
     "build": "gatsby build",
+    "predevelop": "yarn clean",
     "develop": "gatsby develop",
     "start": "yarn develop",
     "format": "prettier --write \"src/**/*.js\"",
@@ -23,7 +24,8 @@
     "lint:fix": "yarn lint --fix",
     "type-check": "tsc --noEmit",
     "type-check:watch": "yarn type-check -- --watch",
-    "check-commit": "yarn type-check && lint-staged"
+    "check-commit": "yarn type-check && lint-staged",
+    "clean": "yarn gatsby clean"
   },
   "dependencies": {
     "@mdx-js/mdx": "1.5.7",
