@@ -5,21 +5,14 @@
   "homepage": "https://assisr.com",
   "description": "My personal website",
   "author": "Matheus Assis Rios <assisr.matheus@gmail.com>",
-  "dependencies": {
-    "@mdx-js/mdx": "1.5.7",
-    "@mdx-js/react": "1.5.7",
-    "gatsby": "2.19.45",
-    "gatsby-plugin-mdx": "1.0.83",
-    "gatsby-plugin-typescript": "2.2.5",
-    "gatsby-plugin-typescript-checker": "1.1.1",
-    "gatsby-source-filesystem": "2.1.56",
-    "react": "16.13.0",
-    "react-dom": "16.13.0"
-  },
   "keywords": [
     "gatsby"
   ],
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/AssisrMatheus/assisr.com/"
+  },
   "scripts": {
     "build": "gatsby build",
     "develop": "gatsby develop",
@@ -32,7 +25,25 @@
     "type-check:watch": "yarn type-check -- --watch",
     "check-commit": "yarn type-check && lint-staged"
   },
+  "dependencies": {
+    "@mdx-js/mdx": "1.5.7",
+    "@mdx-js/react": "1.5.7",
+    "babel-plugin-styled-components": "1.10.7",
+    "gatsby": "2.19.45",
+    "gatsby-plugin-mdx": "1.0.83",
+    "gatsby-plugin-styled-components": "3.1.21",
+    "gatsby-plugin-typescript": "2.2.5",
+    "gatsby-plugin-typescript-checker": "1.1.1",
+    "gatsby-source-filesystem": "2.1.56",
+    "react": "16.13.0",
+    "react-dom": "16.13.0",
+    "styled-components": "5.0.1"
+  },
   "devDependencies": {
+    "@types/node": "13.9.1",
+    "@types/react": "16.9.23",
+    "@types/react-dom": "16.9.5",
+    "@types/styled-components": "5.0.1",
     "@typescript-eslint/eslint-plugin": "2.24.0",
     "@typescript-eslint/parser": "2.24.0",
     "eslint": "6.8.0",
@@ -47,9 +58,5 @@
     "lint-staged": "10.0.8",
     "prettier": "prettier/prettier",
     "typescript": "3.8.3"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/AssisrMatheus/assisr.com/"
   }
 }
