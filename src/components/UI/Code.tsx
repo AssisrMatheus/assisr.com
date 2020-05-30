@@ -45,7 +45,7 @@ const Code: React.FC<{ codeString: string; language: Language }> = ({
 }) => {
   const handleCopy = useCallback(() => {
     copyToClipboard(codeString);
-  }, [copyToClipboard, codeString]);
+  }, [codeString]);
 
   // eslint-disable-next-line react/destructuring-assignment
   if (props['react-live']) {

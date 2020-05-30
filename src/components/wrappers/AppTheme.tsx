@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-empty-function */
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useState, useContext, useEffect, useCallback } from 'react';
 import themes, { AvailableThemes, AppTheme } from '../../styles/theme';
 import {
   getDefaultTheme,
@@ -9,16 +9,14 @@ import {
 
 type AppThemeContext = {
   appThemeName: AvailableThemes;
-  setAppThemeName: (name: AvailableThemes) => void;
   appTheme: AppTheme;
-  setAppTheme: (theme: AppTheme) => void;
+  setTheme: (name: AvailableThemes) => void;
 };
 
 const initialState: AppThemeContext = {
   appThemeName: getDefaultTheme(),
-  setAppThemeName: () => {},
   appTheme: themes[getDefaultTheme()],
-  setAppTheme: () => {}
+  setTheme: () => {}
 };
 
 const AppThemeContext = React.createContext<AppThemeContext>(initialState);
@@ -37,13 +35,22 @@ export const AppThemeProvider: React.FC<{ children: React.ReactNode }> = ({
     initialState.appTheme
   );
 
+  const setTheme = useCallback(
+    (themeName: AvailableThemes) => {
+      if (themeName !== appThemeName) {
+        setAppThemeName(themeName);
+        setAppTheme(themes[themeName]);
+        saveTheme(themeName);
+      }
+    },
+    [appThemeName]
+  );
+
   useEffect(() => {
     const onMediaChange = () => {
       const isLightTheme = getLightThemeMedia().matches;
       const themeName = isLightTheme ? 'light' : 'dark';
-      setAppThemeName(themeName);
-      setAppTheme(themes[themeName]);
-      saveTheme(themeName);
+      setTheme(themeName);
     };
 
     const media = getLightThemeMedia();
@@ -51,7 +58,7 @@ export const AppThemeProvider: React.FC<{ children: React.ReactNode }> = ({
     return () => {
       media.removeEventListener('change', onMediaChange);
     };
-  }, []);
+  }, [setTheme]);
 
   console.log('Utilizing color theme:', appThemeName);
 
@@ -59,9 +66,8 @@ export const AppThemeProvider: React.FC<{ children: React.ReactNode }> = ({
     <AppThemeContext.Provider
       value={{
         appThemeName,
-        setAppThemeName,
         appTheme,
-        setAppTheme
+        setTheme
       }}
     >
       {children}

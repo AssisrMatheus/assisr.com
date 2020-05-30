@@ -41,7 +41,7 @@ const dark: AppTheme = {
   colors: {
     primary: '',
     secondary: '',
-    background: '',
+    background: '#24292D',
     backgroundInverted: '',
     textMain: '',
     textLighter: '',
@@ -56,7 +56,7 @@ const light: AppTheme = {
   colors: {
     primary: '',
     secondary: '',
-    background: '',
+    background: '#E9ECEE',
     backgroundInverted: '',
     textMain: '',
     textLighter: '',
