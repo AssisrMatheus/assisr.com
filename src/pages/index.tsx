@@ -1,15 +1,12 @@
-import { graphql, Link } from 'gatsby';
-import Img from 'gatsby-image';
+import { graphql } from 'gatsby';
+import { GatsbyImageProps } from 'gatsby-image';
 import React from 'react';
 import styled from 'styled-components';
 import HomeLayout from '../components/layout/HomeLayout';
+import PostTeaser from '../components/UI/PostTeaser';
+import Container from '../components/UI/Container';
 
 const IndexWrapper = styled.main``;
-const PostWrapper = styled.div``;
-
-const Image = styled(Img)`
-  border-radius: 5px;
-`;
 
 export const query = graphql`
   query SITE_INDEX_QUERY {
@@ -52,9 +49,7 @@ type IndexProps = {
           date: string;
           cover: {
             publicURL: string;
-            childImageSharp: {
-              sizes: any; // FluidObject
-            };
+            childImageSharp: GatsbyImageProps;
           };
         };
         fields: {
@@ -70,18 +65,26 @@ const Index: React.FC<IndexProps> = ({ data }) => {
   return (
     <HomeLayout>
       <IndexWrapper>
-        {data.allMdx.nodes.map(({ id, excerpt, frontmatter, fields }) => (
-          <PostWrapper key={id}>
-            <Link to={`/${fields.locale}/${fields.slug}`}>
-              {!!frontmatter.cover && (
-                <Image sizes={frontmatter.cover.childImageSharp.sizes} />
-              )}
-              <h1>{frontmatter.title}</h1>
-              <p>{frontmatter.date}</p>
-              <p>{excerpt}</p>
-            </Link>
-          </PostWrapper>
-        ))}
+        <Container>
+          {data.allMdx.nodes.map(
+            ({
+              id,
+              excerpt,
+              frontmatter: { title, date, cover },
+              fields: { locale, slug }
+            }) => (
+              <div key={id}>
+                <PostTeaser
+                  title={title}
+                  date={date}
+                  cover={cover}
+                  excerpt={excerpt}
+                  url={`/${locale}/${slug}`}
+                />
+              </div>
+            )
+          )}
+        </Container>
       </IndexWrapper>
     </HomeLayout>
   );

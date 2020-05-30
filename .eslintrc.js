@@ -38,6 +38,7 @@ module.exports = {
     '@typescript-eslint/explicit-function-return-type': 'off',
     '@typescript-eslint/camelcase': 'off',
     '@typescript-eslint/no-explicit-any': 'off',
+    'import/prefer-default-export': 'off',
     'no-console': 'off',
     'react/jsx-filename-extension': [
       1,

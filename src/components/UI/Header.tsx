@@ -1,6 +1,7 @@
 import { Link } from 'gatsby';
 import React from 'react';
 import { useAppTheme } from '../wrappers/AppTheme';
+import Container from './Container';
 
 const Header: React.FC<{ siteTitle: string; siteDescription: string }> = ({
   siteTitle,
@@ -8,7 +9,7 @@ const Header: React.FC<{ siteTitle: string; siteDescription: string }> = ({
 }) => {
   const { setTheme } = useAppTheme();
   return (
-    <>
+    <Container>
       <Link to="/">
         <h1>{siteTitle}</h1>
         <p>{siteDescription}</p>
@@ -18,7 +19,7 @@ const Header: React.FC<{ siteTitle: string; siteDescription: string }> = ({
         <span> | </span>
         <span onClick={() => setTheme('dark')}>dark</span>
       </span>
-    </>
+    </Container>
   );
 };
 
