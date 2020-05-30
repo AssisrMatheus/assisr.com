@@ -2,7 +2,7 @@ import { graphql, Link } from 'gatsby';
 import Img from 'gatsby-image';
 import React from 'react';
 import styled from 'styled-components';
-import HomeLayout from '../components/homeLayout';
+import HomeLayout from '../components/layout/homeLayout';
 
 const IndexWrapper = styled.main``;
 const PostWrapper = styled.div``;
@@ -72,7 +72,7 @@ const Index: React.FC<IndexProps> = ({ data }) => {
       <IndexWrapper>
         {data.allMdx.nodes.map(({ id, excerpt, frontmatter, fields }) => (
           <PostWrapper key={id}>
-            <Link to={`${fields.locale}/${fields.slug}`}>
+            <Link to={`/${fields.locale}/${fields.slug}`}>
               {!!frontmatter.cover && (
                 <Image sizes={frontmatter.cover.childImageSharp.sizes} />
               )}

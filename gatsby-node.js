@@ -48,8 +48,6 @@ exports.onCreateNode = async ({ node, actions }) => {
 
 exports.createPages = async ({ actions, graphql }) => {
   const { createPage } = actions;
-  // Gets the path for the post template
-  const blogPostTemplate = path.resolve('src/components/postTemplate.tsx');
 
   // Gets all published posts
   const result = await graphql(`
@@ -120,7 +118,7 @@ exports.createPages = async ({ actions, graphql }) => {
       // Create the page for the current translated post
       createPage({
         path: `${locale}/${slug}`, // The url is the locale+slug
-        component: blogPostTemplate,
+        component: path.resolve('src/components/template/postTemplate.tsx'),
         context: {
           slug,
           locale,

@@ -34,5 +34,10 @@
   "auto-close-tag.activationOnLanguage": ["mdx"],
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true
-  }
+  },
+  "discord.lowerDetailsDebugging": "Debugging {filename}",
+  "discord.lowerDetailsEditing": "{filename} - Ln {currentline}, Col {currentcolumn} of {totallines} lines",
+  "discord.detailsEditing": "Working on {workspace}",
+  "discord.detailsDebugging": "Working on {workspace}",
+  "discord.detailsIdle": "Idling"
 }

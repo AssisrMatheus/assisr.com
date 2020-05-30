@@ -3,7 +3,7 @@ import theme from 'prism-react-renderer/themes/nightOwl';
 import React, { useCallback } from 'react';
 import { LiveEditor, LiveError, LivePreview, LiveProvider } from 'react-live';
 import styled from 'styled-components';
-import copyToClipboard from '../utils/copyToClipboard';
+import copyToClipboard from '../../utils/copyToClipboard';
 
 export const Pre = styled.pre`
   text-align: left;

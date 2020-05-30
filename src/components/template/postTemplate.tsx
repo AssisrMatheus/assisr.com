@@ -4,8 +4,9 @@ import { MDXRenderer } from 'gatsby-plugin-mdx';
 import React from 'react';
 import SEO from 'react-seo-component';
 import styled from 'styled-components';
-import useSiteMetadata from '../hooks/useSiteMetadata';
-import PostLayout from './postLayout';
+import useSiteMetadata from '../../hooks/useSiteMetadata';
+import PostLayout from '../layout/postLayout';
+import Container from '../UI/container';
 
 const Image = styled(Img)`
   border-radius: 5px;
@@ -105,28 +106,32 @@ const PostTemplate: React.FC<PostTemplateProps> = ({ data, pageContext }) => {
         publishedDate={date}
         modifiedDate={new Date(Date.now()).toISOString()}
       />
-      {!!cover && <Image sizes={cover.childImageSharp.sizes} />}
-      {alternative && (
-        <p>
-          Alternative:{' '}
-          <Link to={`${alternative.fields.locale}/${alternative.fields.slug}`}>
-            {alternative.frontmatter.title}
+      <Container>
+        {!!cover && <Image sizes={cover.childImageSharp.sizes} />}
+        {alternative && (
+          <p>
+            Alternative:{' '}
+            <Link
+              to={`/${alternative.fields.locale}/${alternative.fields.slug}`}
+            >
+              {alternative.frontmatter.title}
+            </Link>
+          </p>
+        )}
+        <h1>{title}</h1>
+        <p>{date}</p>
+        <MDXRenderer>{body}</MDXRenderer>
+        {previous && (
+          <Link to={`/${previous.fields.locale}/${previous.fields.slug}`}>
+            <p>{previous.frontmatter.title}</p>
           </Link>
-        </p>
-      )}
-      <h1>{title}</h1>
-      <p>{date}</p>
-      <MDXRenderer>{body}</MDXRenderer>
-      {previous && (
-        <Link to={`${previous.fields.locale}/${previous.fields.slug}`}>
-          <p>{previous.frontmatter.title}</p>
-        </Link>
-      )}
-      {next && (
-        <Link to={`${next.fields.locale}/${next.fields.slug}`}>
-          <p>{next.frontmatter.title}</p>
-        </Link>
-      )}
+        )}
+        {next && (
+          <Link to={`/${next.fields.locale}/${next.fields.slug}`}>
+            <p>{next.frontmatter.title}</p>
+          </Link>
+        )}
+      </Container>
     </PostLayout>
   );
 };

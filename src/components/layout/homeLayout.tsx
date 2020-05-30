@@ -1,8 +1,9 @@
 import React from 'react';
 import SEO from 'react-seo-component';
-import useSiteMetadata from '../hooks/useSiteMetadata';
-import AppStyles from '../styles/globalStyles';
-import Header from './header';
+import useSiteMetadata from '../../hooks/useSiteMetadata';
+import Header from '../UI/header';
+import { AppThemeProvider } from '../wrappers/appTheme';
+import StyledComponents from '../wrappers/styledComponents';
 
 const HomeLayout: React.FC = ({ children }) => {
   const {
@@ -15,7 +16,7 @@ const HomeLayout: React.FC = ({ children }) => {
     twitterUsername
   } = useSiteMetadata();
   return (
-    <AppStyles>
+    <>
       <SEO
         title={title}
         titleTemplate={title}
@@ -26,9 +27,14 @@ const HomeLayout: React.FC = ({ children }) => {
         siteLocale={siteLocale}
         twitterUsername={twitterUsername}
       />
-      <Header siteTitle={title} siteDescription={description} />
-      {children}
-    </AppStyles>
+
+      <AppThemeProvider>
+        <StyledComponents>
+          <Header siteTitle={title} siteDescription={description} />
+          {children}
+        </StyledComponents>
+      </AppThemeProvider>
+    </>
   );
 };
 

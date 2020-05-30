@@ -27,6 +27,7 @@ module.exports = {
     '@typescript-eslint/explicit-function-return-type': 'off',
     '@typescript-eslint/camelcase': 'off',
     '@typescript-eslint/no-explicit-any': 'off',
+    'no-console': 'off',
     'react/jsx-filename-extension': [
       1,
       { extensions: ['.tsx', '.ts', '.mdx'] }
