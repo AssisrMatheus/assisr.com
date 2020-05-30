@@ -118,7 +118,7 @@ exports.createPages = async ({ actions, graphql }) => {
       // Create the page for the current translated post
       createPage({
         path: `${locale}/${slug}`, // The url is the locale+slug
-        component: path.resolve('src/components/template/postTemplate.tsx'),
+        component: path.resolve('src/components/template/PostTemplate.tsx'),
         context: {
           slug,
           locale,

@@ -2,7 +2,7 @@ import { graphql, Link } from 'gatsby';
 import Img from 'gatsby-image';
 import React from 'react';
 import styled from 'styled-components';
-import HomeLayout from '../components/layout/homeLayout';
+import HomeLayout from '../components/layout/HomeLayout';
 
 const IndexWrapper = styled.main``;
 const PostWrapper = styled.div``;
