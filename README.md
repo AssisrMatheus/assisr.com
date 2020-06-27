@@ -1,35 +1,30 @@
-# Gatsby Starter MDX Basic
+This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-View this starter [live on Netlify](https://gatsby-starter-mdx-basic.netlify.com/)
+## Getting Started
 
-This starter build MDX support into the
-[gatsby-default-starter](https://github.com/gatsbyjs/gatsby-starter-default). Its
-README also applies here.
+First, run the development server:
 
-1. Create a new Gatsby site using this starter
-
-```sh
-gatsby new my-site https://github.com/ChristopherBiscardi/gatsby-starter-mdx-basic
+```bash
+npm run dev
+# or
+yarn dev
 ```
 
-2. Install dependencies
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-```sh
-yarn
-```
+You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
 
-3. Run the develop script
+## Learn More
 
-```sh
-yarn develop
-```
+To learn more about Next.js, take a look at the following resources:
 
-4. Edit Page 2 in `src/pages/page-2.mdx`
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-## Refs:
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
 
-https://www.arden.nl/setting-up-a-gatsby-js-starter-with-type-script-es-lint-prettier-and-pre-commit-hooks
-https://www.freecodecamp.org/news/build-a-developer-blog-from-scratch-with-gatsby-and-mdx/
+## Deploy on Vercel
 
-https://egghead.io/lessons/vue-js-introduction-to-mdx?pl=building-websites-with-mdx-and-gatsby-161e9529
-https://juliangaramendy.dev/custom-open-graph-images-in-gatsby-blog/
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/import?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
