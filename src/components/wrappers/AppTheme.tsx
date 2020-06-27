@@ -4,7 +4,7 @@ import themes, { AvailableThemes, AppTheme } from '../../styles/theme';
 import {
   getDefaultTheme,
   getLightThemeMedia,
-  saveTheme
+  saveTheme,
 } from '../../utils/theming';
 
 type AppThemeContext = {
@@ -16,7 +16,7 @@ type AppThemeContext = {
 const initialState: AppThemeContext = {
   appThemeName: getDefaultTheme(),
   appTheme: themes[getDefaultTheme()],
-  setTheme: () => {}
+  setTheme: () => {},
 };
 
 const AppThemeContext = React.createContext<AppThemeContext>(initialState);
@@ -25,7 +25,7 @@ const AppThemeContext = React.createContext<AppThemeContext>(initialState);
  * The AppTheme provider for its react context
  */
 export const AppThemeProvider: React.FC<{ children: React.ReactNode }> = ({
-  children
+  children,
 }) => {
   const [appThemeName, setAppThemeName] = useState<
     AppThemeContext['appThemeName']
@@ -67,7 +67,7 @@ export const AppThemeProvider: React.FC<{ children: React.ReactNode }> = ({
       value={{
         appThemeName,
         appTheme,
-        setTheme
+        setTheme,
       }}
     >
       {children}

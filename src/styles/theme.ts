@@ -4,8 +4,13 @@ export const spacing = {
   sp8: '8px',
   sp16: '16px',
   sp24: '24px',
-  sp32: '32px'
+  sp32: '32px',
+  sp64: '64px',
+  sp128: '128px',
+  sp256: '256px',
 };
+
+export type SpacingEnum = keyof typeof spacing;
 
 export const screens = {
   // Values extracted from bootstrap 4
@@ -14,7 +19,7 @@ export const screens = {
   tablet: 760,
   laptop: 992,
   desktop: 1200,
-  ultrawide: 1925
+  ultrawide: 1925,
 };
 
 export type AvailableThemes = 'light' | 'dark';
@@ -30,7 +35,7 @@ export type AppTheme = {
     backgroundInverted: string;
     textMain: string;
     textLighter: string;
-    textOnBG: string;
+    textOnInverted: string;
   };
 };
 
@@ -42,11 +47,11 @@ const dark: AppTheme = {
     primary: '',
     secondary: '',
     background: '#24292D',
-    backgroundInverted: '',
-    textMain: '',
+    backgroundInverted: '#E9ECEE',
+    textMain: '#FAFBFD',
     textLighter: '',
-    textOnBG: ''
-  }
+    textOnInverted: '#24292D',
+  },
 };
 
 const light: AppTheme = {
@@ -57,18 +62,18 @@ const light: AppTheme = {
     primary: '',
     secondary: '',
     background: '#E9ECEE',
-    backgroundInverted: '',
-    textMain: '',
-    textLighter: '',
-    textOnBG: ''
-  }
+    backgroundInverted: '#24292D',
+    textMain: '#24292D',
+    textLighter: '#5B5F68',
+    textOnInverted: '#FAFBFD',
+  },
 };
 
 const themes: {
   [key in AvailableThemes]: AppTheme;
 } = {
   dark,
-  light
+  light,
 };
 
 export default themes;

@@ -6,7 +6,7 @@ module.exports = {
   parser: '@typescript-eslint/parser', // Specifies the ESLint parser
   globals: {
     graphql: true,
-    __PATH_PREFIX__: true
+    __PATH_PREFIX__: true,
   },
   extends: [
     require.resolve(`eslint-config-react-app`),
@@ -19,15 +19,15 @@ module.exports = {
     'plugin:import/errors',
     'plugin:import/warnings',
     'plugin:import/typescript',
-    'plugin:mdx/recommended'
+    'plugin:mdx/recommended',
   ],
   plugins: [`graphql`, 'jsx-a11y'],
   parserOptions: {
     ecmaVersion: 2018, // Allows for the parsing of modern ECMAScript features
     sourceType: 'module', // Allows for the use of imports
     ecmaFeatures: {
-      jsx: true // Allows for the parsing of JSX
-    }
+      jsx: true, // Allows for the parsing of JSX
+    },
   },
   rules: {
     // My rules
@@ -36,13 +36,14 @@ module.exports = {
     'react/display-name': 'off',
     'react/jsx-props-no-spreading': 'off',
     '@typescript-eslint/explicit-function-return-type': 'off',
+    '@typescript-eslint/explicit-module-boundary-types': 'off',
     '@typescript-eslint/camelcase': 'off',
     '@typescript-eslint/no-explicit-any': 'off',
     'import/prefer-default-export': 'off',
     'no-console': 'off',
     'react/jsx-filename-extension': [
       1,
-      { extensions: ['.tsx', '.ts', '.mdx'] }
+      { extensions: ['.tsx', '.ts', '.mdx'] },
     ],
     'import/extensions': [
       'error',
@@ -53,8 +54,8 @@ module.exports = {
         ts: 'never',
         tsx: 'never',
         // md: 'never',
-        mdx: 'never'
-      }
+        mdx: 'never',
+      },
     ],
 
     'import/no-webpack-loader-syntax': [0],
@@ -108,15 +109,15 @@ module.exports = {
     'jsx-a11y/role-has-required-aria-props': `warn`,
     'jsx-a11y/role-supports-aria-props': `warn`,
     'jsx-a11y/scope': `warn`,
-    'jsx-a11y/tabindex-no-positive': `warn`
+    'jsx-a11y/tabindex-no-positive': `warn`,
   },
   overrides: [
     // Override some TypeScript rules just for .js files
     {
       files: ['*.js'],
       rules: {
-        '@typescript-eslint/no-var-requires': 'off'
-      }
+        '@typescript-eslint/no-var-requires': 'off',
+      },
     },
     {
       files: ['*.md'],
@@ -125,24 +126,24 @@ module.exports = {
           2,
           {
             // unnecessary if you're not using `eslint-plugin-prettier`, but required if you are
-            parser: 'markdown'
-          }
-        ]
-      }
+            parser: 'markdown',
+          },
+        ],
+      },
     },
     {
       files: ['*.mdx'],
-      extends: ['plugin:mdx/overrides']
-    }
+      extends: ['plugin:mdx/overrides'],
+    },
   ],
   settings: {
     react: {
-      version: 'detect' // Tells eslint-plugin-react to automatically detect the version of React to use
-    }
+      version: 'detect', // Tells eslint-plugin-react to automatically detect the version of React to use
+    },
   },
   env: {
     browser: true,
     node: true,
-    es6: true
-  }
+    es6: true,
+  },
 };

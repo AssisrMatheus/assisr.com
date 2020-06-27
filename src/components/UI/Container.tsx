@@ -3,10 +3,10 @@ import responsiveMediaQuery from '../../utils/responsiveMediaQuery';
 
 export default styled.div`
   width: 100%;
-  margin: 0 ${props => props.theme.spacing.sp16};
+  margin: 0 ${(props) => props.theme.spacing.sp16};
 
   ${responsiveMediaQuery('phone')} {
-    margin: 0 ${props => props.theme.spacing.sp32};
+    margin: 0 ${(props) => props.theme.spacing.sp32};
     max-width: 540px;
   }
 

@@ -27,21 +27,21 @@ exports.onCreateNode = async ({ node, actions }) => {
     createNodeField({
       name: `slug`,
       node,
-      value: slug
+      value: slug,
     });
 
     // Create a idPath field in graphql query
     createNodeField({
       name: `idPath`,
       node,
-      value: id
+      value: id,
     });
 
     // Create a locale field in graphql query
     createNodeField({
       name: `locale`,
       node,
-      value: locale
+      value: locale,
     });
   }
 };
@@ -80,7 +80,7 @@ exports.createPages = async ({ actions, graphql }) => {
     const postTranslations = group.nodes; // Get all translations
 
     // create page for each translation
-    postTranslations.forEach(post => {
+    postTranslations.forEach((post) => {
       // Get the values
       const { locale, slug, idPath } = post.fields;
 
@@ -95,11 +95,11 @@ exports.createPages = async ({ actions, graphql }) => {
       // If there's a previousPost
       if (previousPost) {
         // Gets the post with the same translation
-        previous = previousPost.nodes.find(x => x.fields.locale === locale);
+        previous = previousPost.nodes.find((x) => x.fields.locale === locale);
 
         if (!previous) {
           // If not found get the other one
-          previous = previousPost.nodes.find(x => x.fields.locale !== locale);
+          previous = previousPost.nodes.find((x) => x.fields.locale !== locale);
         }
       }
 
@@ -107,11 +107,11 @@ exports.createPages = async ({ actions, graphql }) => {
       // If there's a previousPost
       if (nextPost) {
         // Gets the post with the same translation
-        next = nextPost.nodes.find(x => x.fields.locale === locale);
+        next = nextPost.nodes.find((x) => x.fields.locale === locale);
 
         if (!next) {
           // If not found get the other one
-          next = nextPost.nodes.find(x => x.fields.locale !== locale);
+          next = nextPost.nodes.find((x) => x.fields.locale !== locale);
         }
       }
 
@@ -126,8 +126,8 @@ exports.createPages = async ({ actions, graphql }) => {
           previous,
           next,
           // Displays the other translated post if available
-          alternative: postTranslations.find(x => x.fields.slug !== slug)
-        }
+          alternative: postTranslations.find((x) => x.fields.slug !== slug),
+        },
       });
     });
   });

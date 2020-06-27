@@ -13,7 +13,7 @@ const HomeLayout: React.FC = ({ children }) => {
     siteUrl,
     siteLanguage,
     siteLocale,
-    twitterUsername
+    twitterUsername,
   } = useSiteMetadata();
   return (
     <>

@@ -84,7 +84,7 @@ const PostTemplate: React.FC<PostTemplateProps> = ({ data, pageContext }) => {
     siteLanguage,
     siteLocale,
     twitterUsername,
-    authorName
+    authorName,
   } = useSiteMetadata();
   const { frontmatter, body, fields, excerpt } = data.mdx;
   const { title, date, cover } = frontmatter;

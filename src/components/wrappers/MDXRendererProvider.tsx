@@ -4,10 +4,10 @@ import Code from '../UI/Code';
 
 const components: { [key: string]: React.FC } = {
   h2: ({ children }) => <h2 style={{ color: 'rebeccapurple' }}>{children}</h2>,
-  'p.inlineCode': props => (
+  'p.inlineCode': (props) => (
     <code style={{ backgroundColor: 'lightgray' }} {...props} />
   ),
-  pre: props => {
+  pre: (props) => {
     const { children } = props as any;
     const { props: childProps } = children;
 
@@ -24,7 +24,7 @@ const components: { [key: string]: React.FC } = {
       );
     }
     return null;
-  }
+  },
 };
 
 const MDXRendererProvider: React.FC = ({ children }) => (

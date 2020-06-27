@@ -19,7 +19,7 @@ const PostTeaser: React.FC<PostTeaserProps> = ({
   date,
   excerpt,
   cover,
-  url
+  url,
 }) => (
   <PostTeaserContainer>
     <Link to={url}>

@@ -7,7 +7,7 @@ module.exports = {
     siteLanguage: `en`,
     siteLocale: `en`,
     twitterUsername: `@AdowTatep`,
-    authorName: `Matheus Assis Rios`
+    authorName: `Matheus Assis Rios`,
   },
   plugins: [
     'gatsby-plugin-typescript',
@@ -26,17 +26,17 @@ module.exports = {
             options: {
               maxWidth: 640,
               withWebp: true,
-              tracedSVG: true
-            }
-          }
-        ]
-      }
+              tracedSVG: true,
+            },
+          },
+        ],
+      },
     },
     {
       resolve: 'gatsby-source-filesystem',
       options: {
-        path: `${__dirname}/src/blog`
-      }
-    }
-  ]
+        path: `${__dirname}/src/blog`,
+      },
+    },
+  ],
 };
