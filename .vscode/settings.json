@@ -1,0 +1,43 @@
+{
+  // "eslint.options": {
+  //   "extensions": [".js", ".jsx", ".md", ".mdx", ".ts", ".tsx"]
+  // },
+  // "eslint.validate": [
+  //   {
+  //     "language": "javascript",
+  //     "autoFix": true
+  //   },
+  //   {
+  //     "language": "javascriptreact",
+  //     "autoFix": true
+  //   },
+  //   // {
+  //   //   "language": "markdown",
+  //   //   "autoFix": true
+  //   // },
+  //   // {
+  //   //   "language": "mdx",
+  //   //   "autoFix": true
+  //   // },
+  //   {
+  //     "language": "typescript",
+  //     "autoFix": true
+  //   },
+  //   {
+  //     "language": "typescriptreact",
+  //     "autoFix": true
+  //   }
+  // ],
+  "files.associations": {
+    "*.md": "mdx"
+  },
+  "auto-close-tag.activationOnLanguage": ["mdx"],
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
+  "discord.lowerDetailsDebugging": "Debugging {filename}",
+  "discord.lowerDetailsEditing": "{filename} - Ln {currentline}, Col {currentcolumn} of {totallines} lines",
+  "discord.detailsEditing": "Working on {workspace}",
+  "discord.detailsDebugging": "Working on {workspace}",
+  "discord.detailsIdle": "Idling"
+}
