@@ -1,4 +1,15 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+<p align="center">
+	<a href="https://gitmoji.carloscuesta.me">
+		<img src="https://img.shields.io/badge/gitmoji-%20😜%20😍-FFDD67.svg?style=flat-square"
+			 alt="Gitmoji">
+	</a>
+</p>
+
+# [https://assisr.com/](https://assisr.com/)
+
+This is the repository for my personal website.
+
+It is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
 
@@ -28,3 +39,21 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/import?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+## Credentials
+
+The app uses credentials to fetch data from multiple sources, they are set on the `./.env` file that stands on the root folder.  
+The env file look like this:
+
+```BASH
+REACT_APP_GOOGLE_API_KEY=MY-GOOGLE-API-KEY
+```
+
+### How to get credentials:
+
+- Google/Youtube api key
+  - Go to the [youtube documentation](https://developers.google.com/youtube/registering_an_application#create_project) and click on `1 - Open the credentials page`
+  - Select or create a project on the top left corner of the page
+  - On `Dashboard`, click on `+ Enable apis and services` search for`YouTube Data API v3` and enable it
+  - On `Credentials` create a new credential of type `API Key`
+  - Set it on `./.env` file
