@@ -9,7 +9,7 @@ module.exports = {
     'plugin:react-hooks/recommended',
     'plugin:mdx/recommended',
     'plugin:jsx-a11y/recommended',
-    'plugin:jsdoc/recommended',
+    // 'plugin:jsdoc/recommended',
     'plugin:import/errors',
     'plugin:import/warnings',
     'plugin:import/typescript',
