@@ -1,11 +1,13 @@
 import { createGlobalStyle } from 'styled-components';
+import tw from 'twin.macro';
 
 export default createGlobalStyle`
   html, #root, #__next, body {
     transition: background-color 70ms ease-out, color 70ms ease-out;
     overflow-x: hidden;
-    background-color: ${(props) => props.theme.colors.background};
-    color: ${(props) => props.theme.colors.textMain};
+    ${tw`bg-background`}
+    ${tw`text-textMain`}
+    ${tw`font-body`}
 
     &.dark-mode {
       /* --primary: ; */

@@ -10,6 +10,7 @@ import { Header } from '../../components/UI/Header';
 import { Post } from '../../interfaces/posts';
 import { getPosts } from '../../lib/post';
 import { Container } from '../../components/UI/Container';
+import PostTeaser from '../../components/UI/PostTeaser';
 
 const Home: React.FC<HomeProps> = ({ posts }) => {
   const locale = useLocale();
@@ -17,23 +18,26 @@ const Home: React.FC<HomeProps> = ({ posts }) => {
     <>
       <Header />
       <Container>
-        {posts && posts.length > 0 && (
-          <div>
-            {posts.map((post) => (
-              <Link
-                key={post.slug}
-                href="/[locale]/blog/[slug]"
-                as={`/${locale}/blog/${post.slug}`}
-              >
-                <a>
-                  <div style={{ marginBottom: '10px' }}>
-                    <h2>{post.matter.title}</h2>
-                  </div>
-                </a>
-              </Link>
-            ))}
+        <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
+          <div className="col-span-1 md:col-span-2" />
+          <div className="col-span-1 md:col-span-3">
+            {posts && posts.length > 0 && (
+              <div className="flex flex-col space-y-16">
+                {posts.map((post) => (
+                  <Link
+                    key={post.slug}
+                    href="/[locale]/blog/[slug]"
+                    as={`/${locale}/blog/${post.slug}`}
+                  >
+                    <a>
+                      <PostTeaser post={post} />
+                    </a>
+                  </Link>
+                ))}
+              </div>
+            )}
           </div>
-        )}
+        </div>
       </Container>
     </>
   );

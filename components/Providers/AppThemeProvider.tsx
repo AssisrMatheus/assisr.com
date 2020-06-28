@@ -153,6 +153,7 @@ export type AppTheme = {
     background: string;
     backgroundInverted: string;
     textMain: string;
+    textLighter: string;
     textOnInverted: string;
   };
 };

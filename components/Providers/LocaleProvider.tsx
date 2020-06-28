@@ -4,7 +4,13 @@ import moment from 'moment';
 import momentEn from 'moment/locale/en-ca';
 import momentBr from 'moment/locale/pt-br';
 import { useRouter } from 'next/router';
-import React, { useContext, useEffect, useMemo, useState } from 'react';
+import React, {
+  useContext,
+  useEffect,
+  useMemo,
+  useState,
+  useCallback,
+} from 'react';
 import { IntlProvider } from 'react-intl';
 import en from '../../locales/en.json';
 import pt from '../../locales/pt.json';
@@ -26,6 +32,7 @@ type AvailableLocales = keyof typeof localeMessages;
 type LocaleContext = {
   locale: AvailableLocales;
   setLocale: (locale: AvailableLocales) => void;
+  toggle: () => void;
   hasProvider: boolean;
 };
 
@@ -33,6 +40,8 @@ const initialState: LocaleContext = {
   locale: 'en',
   // eslint-disable-next-line @typescript-eslint/no-empty-function
   setLocale: () => {},
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
+  toggle: () => {},
   hasProvider: false,
 };
 
@@ -49,6 +58,7 @@ export const LocaleProvider: React.FC<{ locale?: AvailableLocales }> = ({
 
   // Only run this once at startup
   const initialLocale = useMemo(() => {
+    console.log('query', queryLocale, 'props', propLocale);
     // Prefer the locale in the router, if not available, get the locale given as prop, lastly, get the initial state locale, which is the default locale
     const locale =
       (queryLocale as AvailableLocales | undefined) ||
@@ -70,6 +80,12 @@ export const LocaleProvider: React.FC<{ locale?: AvailableLocales }> = ({
   const [locale, setLocale] = useState<LocaleContext['locale']>(initialLocale);
 
   useEffect(() => {
+    if (locale !== initialLocale) {
+      setLocale(initialLocale);
+    }
+  }, [locale, initialLocale]);
+
+  useEffect(() => {
     if (locale && process.browser) {
       cookie.set('locale', locale, { expires: 1 });
     }
@@ -85,6 +101,10 @@ export const LocaleProvider: React.FC<{ locale?: AvailableLocales }> = ({
 
   const messages = useMemo(() => localeMessages[locale], [locale]);
 
+  const toggle = useCallback(() => {
+    setLocale(locale === 'en' ? 'pt' : 'en');
+  }, [setLocale, locale]);
+
   return (
     <div id="locale-provider">
       <IntlProvider locale={locale} messages={messages}>
@@ -93,6 +113,7 @@ export const LocaleProvider: React.FC<{ locale?: AvailableLocales }> = ({
             hasProvider: true,
             locale,
             setLocale,
+            toggle,
           }}
         >
           {children}
@@ -102,7 +123,7 @@ export const LocaleProvider: React.FC<{ locale?: AvailableLocales }> = ({
   );
 };
 
-const useLocaleContext = () => useContext(LocaleContext);
+export const useLocaleContext = () => useContext(LocaleContext);
 
 export const useLocale = () => {
   const { locale } = useLocaleContext();

@@ -11,7 +11,7 @@ module.exports = {
   ],
   theme: {
     fontFamily: {
-      body: ['"Hammersmith One"', 'Roboto', 'sans-serif'],
+      body: ['"Hammersmith One"', 'Helvetica', 'Roboto', 'sans-serif'],
     },
     extend: {
       colors: {
@@ -20,6 +20,7 @@ module.exports = {
         background: 'var(--background)',
         backgroundInverted: 'var(--background-inverted)',
         textMain: 'var(--text-main)',
+        textLighter: 'var(--text-lighter)',
         textOnInverted: 'var(--text-on-inverted)',
       },
     },
