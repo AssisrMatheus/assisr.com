@@ -4,17 +4,23 @@ import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from 'next';
 import { localeMessages } from '../../../components/Providers/LocaleProvider';
 import { getPosts, getPostBySlug } from '../../../lib/post';
 import { Post } from '../../../interfaces/posts';
+import { AppLayout } from '../../../components/Layouts/AppLayout';
+import { Container } from '../../../components/UI/Container';
 
 const Home: React.FC<HomeContainerProps> = ({ post }) => {
   return (
-    <>
-      {post && (
-        <div>
-          <h2>{post.matter.title}</h2>
-          {post.body && <div dangerouslySetInnerHTML={{ __html: post.body }} />}
-        </div>
-      )}
-    </>
+    <AppLayout>
+      <Container>
+        {post && (
+          <div>
+            <h2>{post.matter.title}</h2>
+            {post.body && (
+              <div dangerouslySetInnerHTML={{ __html: post.body }} />
+            )}
+          </div>
+        )}
+      </Container>
+    </AppLayout>
   );
 };
 

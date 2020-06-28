@@ -1,5 +1,6 @@
 import React from 'react';
 import { HeaderTwo } from '../Typography';
+import AsyncImage from '../AsyncImage';
 
 type CardProps = { title: string; image?: string; actions?: React.ReactNode };
 
@@ -7,7 +8,7 @@ const Card: React.FC<CardProps> = ({ children, title, image, actions }) => (
   <div className="bg-white rounded-lg shadow-xl">
     {image && (
       <div className="bg-gray-400 rounded-t-lg">
-        <img
+        <AsyncImage
           className="object-cover rounded-t-lg h-48 w-full"
           src={image}
           alt={title}

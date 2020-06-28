@@ -29,6 +29,7 @@ const PostTeaser: React.FC<PostTeaserProps> = ({ post }) => {
     <PostWrapper>
       <Card
         title={post.matter.title}
+        image={post.matter.cover}
         actions={<Paragraph className="text-textLighter">{date}</Paragraph>}
       >
         <Paragraph>

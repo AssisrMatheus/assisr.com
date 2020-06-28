@@ -58,7 +58,6 @@ export const LocaleProvider: React.FC<{ locale?: AvailableLocales }> = ({
 
   // Only run this once at startup
   const initialLocale = useMemo(() => {
-    console.log('query', queryLocale, 'props', propLocale);
     // Prefer the locale in the router, if not available, get the locale given as prop, lastly, get the initial state locale, which is the default locale
     const locale =
       (queryLocale as AvailableLocales | undefined) ||

@@ -1,21 +1,21 @@
 import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from 'next';
 import Link from 'next/link';
 import React from 'react';
+import { AppLayout } from '../../components/Layouts/AppLayout';
 import {
   localeMessages,
   useLocale,
 } from '../../components/Providers/LocaleProvider';
-
+import { Container } from '../../components/UI/Container';
 import { Header } from '../../components/UI/Header';
+import PostTeaser from '../../components/UI/PostTeaser';
 import { Post } from '../../interfaces/posts';
 import { getPosts } from '../../lib/post';
-import { Container } from '../../components/UI/Container';
-import PostTeaser from '../../components/UI/PostTeaser';
 
 const Home: React.FC<HomeProps> = ({ posts }) => {
   const locale = useLocale();
   return (
-    <>
+    <AppLayout>
       <Header />
       <Container>
         <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
@@ -39,7 +39,7 @@ const Home: React.FC<HomeProps> = ({ posts }) => {
           </div>
         </div>
       </Container>
-    </>
+    </AppLayout>
   );
 };
 

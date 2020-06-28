@@ -1,1 +1,7 @@
-{ "locale": "pt" }
+{
+  "locale": "pt",
+  "profile": {
+    "name": "Matheus Assis Rios",
+    "description": "Tecnólogo em Sistemas para Internet. Com experiência de trabalho em empresas de grande e pequeno porte, me permitindo adquirir habilidades não só com programação mas também de trabalho em projetos maiores. Depois destas experiências, quis tentar algo diferente e aceitei um novo desafio em uma startup de Machine Learning, ajudando eles a tirar obstáculos do caminho. Isso me transformou em um profissional versátil, já que tive que aprender novas tecnologias, que sempre aprendi rapidamente. Por isso gosto sempre de me manter atualizado, algo que deixa minha mente fresca, dando lugar para mais desafios."
+  }
+}
