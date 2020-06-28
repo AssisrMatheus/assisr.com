@@ -9,7 +9,7 @@ import { IntlProvider } from 'react-intl';
 import en from '../../locales/en.json';
 import pt from '../../locales/pt.json';
 
-const localeMessages = {
+export const localeMessages = {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   en: flatten(en) as Record<string, any>,
   // eslint-disable-next-line @typescript-eslint/no-explicit-any

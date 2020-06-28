@@ -32,6 +32,7 @@ module.exports = {
     '@typescript-eslint/explicit-module-boundary-types': 'off',
     '@typescript-eslint/camelcase': 'off',
     'no-console': 'off',
+    'jsx-a11y/anchor-is-valid': 'off',
     'import/no-unresolved': 'off',
     'import/prefer-default-export': 'off',
     'import/extensions': [

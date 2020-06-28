@@ -1,5 +1,7 @@
 import fs from 'fs';
+import moment from 'moment';
 import path from 'path';
+import { Post } from '../interfaces/posts';
 import { mdxStringToFrontmatter, mdxStringToHtml } from './markdown';
 
 const postsDirectory = path.join(process.cwd(), 'posts');
@@ -65,7 +67,7 @@ const postsInDirectory = async () => {
     });
 };
 
-const getPostContent = async (
+export const getPostContent = async (
   {
     locale,
     slug,
@@ -81,38 +83,53 @@ const getPostContent = async (
     path: string;
   },
   skipBody?: boolean
-) => {
+): Promise<Post> => {
   const content = await readFileAsync(postPath);
-  const body = !skipBody ? await mdxStringToHtml(content) : undefined;
   const {
     data: matter,
     excerpt: initialExcerpt,
   } = await mdxStringToFrontmatter(content);
 
+  const post: Post = {
+    locale,
+    slug,
+    matter: {
+      ...(matter as Post['matter']),
+      date: matter?.date?.toISOString(),
+    },
+  };
+
+  const body = !skipBody ? await mdxStringToHtml(content) : undefined;
+
+  if (body) {
+    post.body = body;
+  }
+
   const excerpt = initialExcerpt
     ? await mdxStringToHtml(initialExcerpt)
     : undefined;
 
-  return {
-    locale,
-    slug,
-    matter,
-    body,
-    excerpt,
-  };
+  if (excerpt) {
+    post.excerpt = excerpt;
+  }
+
+  return post;
 };
 
-export const getPosts = async (locale: string) => {
+export const getPosts = async (locale: string): Promise<Post[]> => {
   const posts = (await postsInDirectory()).filter((x) => x.locale === locale);
   const postsWithContent = await Promise.all(
     posts.map((x) => getPostContent(x, true))
   );
   return postsWithContent.sort((post1, post2) =>
-    post1.matter.date > post2.matter.date ? -1 : 1
+    moment(post1.matter.date).isBefore(moment(post2.matter.date)) ? -1 : 1
   );
 };
 
-export const getPostBySlug = async (locale: string, slug: string) => {
+export const getPostBySlug = async (
+  locale: string,
+  slug: string
+): Promise<Post | undefined> => {
   const posts = await postsInDirectory();
   const post = posts
     .filter((x) => x.locale === locale)
