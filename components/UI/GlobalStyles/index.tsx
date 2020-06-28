@@ -1,17 +1,34 @@
 import { createGlobalStyle } from 'styled-components';
 
-const GlobalStyles = createGlobalStyle`
-  html, #root, #__next {
-    width: 100%;
-    scroll-behavior: smooth;
-  }
+export const getGlobalTransition = (property: string) =>
+  `
+    ${property} 70ms ease-out
+  `;
 
-  body {
-    width: 100%;
-    height: 100%;
-    margin: 0;
+export default createGlobalStyle`
+  html, #root, #__next, body {
+    transition: ${getGlobalTransition('background-color')};
     overflow-x: hidden;
+    background-color: ${(props) => props.theme.colors.background};
+
+    &.dark-mode {
+      /* --primary: ; */
+      /* --secondary: ; */
+      --background: #24292D;
+      --background-inverted: #E9ECEE;
+      --text-main: #FAFBFD;
+      --text-lighter: #5B5F68;
+      --text-on-inverted: #24292D;
+    }
+
+    &.light-mode {
+      /* --primary: ; */
+      /* --secondary: ; */
+      --background: #E9ECEE;
+      --background-inverted: #24292D;
+      --text-main: #24292D;
+      --text-lighter: #5B5F68;
+      --text-on-inverted: #FAFBFD;
+    }
   }
 `;
-
-export default GlobalStyles;

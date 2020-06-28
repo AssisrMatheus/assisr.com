@@ -1,34 +1,39 @@
-import React from 'react';
-import Link from 'next/link';
 import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from 'next';
+import Link from 'next/link';
+import React from 'react';
 import {
   localeMessages,
   useLocale,
 } from '../../components/Providers/LocaleProvider';
-import { getPosts } from '../../lib/post';
+import { Container } from '../../components/UI/Container';
+import { Header } from '../../components/UI/Header';
 import { Post } from '../../interfaces/posts';
+import { getPosts } from '../../lib/post';
 
 const Home: React.FC<HomeProps> = ({ posts }) => {
   const locale = useLocale();
   return (
     <>
-      {posts && posts.length > 0 && (
-        <div style={{ margin: '0 auto', maxWidth: '1200px' }}>
-          {posts.map((post) => (
-            <Link
-              key={post.slug}
-              href="/[locale]/blog/[slug]"
-              as={`/${locale}/blog/${post.slug}`}
-            >
-              <a>
-                <div style={{ marginBottom: '10px' }}>
-                  <h2>{post.matter.title}</h2>
-                </div>
-              </a>
-            </Link>
-          ))}
-        </div>
-      )}
+      <Header />
+      <Container>
+        {posts && posts.length > 0 && (
+          <div style={{ margin: '0 auto', maxWidth: '1200px' }}>
+            {posts.map((post) => (
+              <Link
+                key={post.slug}
+                href="/[locale]/blog/[slug]"
+                as={`/${locale}/blog/${post.slug}`}
+              >
+                <a>
+                  <div style={{ marginBottom: '10px' }}>
+                    <h2>{post.matter.title}</h2>
+                  </div>
+                </a>
+              </Link>
+            ))}
+          </div>
+        )}
+      </Container>
     </>
   );
 };
