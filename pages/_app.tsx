@@ -3,6 +3,7 @@ import React from 'react';
 import Head from 'next/head';
 import { LocaleProvider } from '../components/Providers/LocaleProvider';
 import { AppThemeProvider } from '../components/Providers/AppThemeProvider';
+import '../styles/tailwind.css';
 
 const App: React.FC<AppProps> = ({ Component, pageProps }) => (
   <>

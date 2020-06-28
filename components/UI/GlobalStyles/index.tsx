@@ -1,15 +1,11 @@
 import { createGlobalStyle } from 'styled-components';
 
-export const getGlobalTransition = (property: string) =>
-  `
-    ${property} 70ms ease-out
-  `;
-
 export default createGlobalStyle`
   html, #root, #__next, body {
-    transition: ${getGlobalTransition('background-color')};
+    transition: background-color 70ms ease-out, color 70ms ease-out;
     overflow-x: hidden;
     background-color: ${(props) => props.theme.colors.background};
+    color: ${(props) => props.theme.colors.textMain};
 
     &.dark-mode {
       /* --primary: ; */

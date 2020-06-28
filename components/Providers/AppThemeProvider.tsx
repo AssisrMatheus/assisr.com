@@ -1,47 +1,166 @@
 import React, { useContext } from 'react';
 import { ThemeProvider } from 'styled-components';
-import { Normalize } from 'styled-normalize';
 import useDarkMode from 'use-dark-mode';
+import resolveConfig from 'tailwindcss/resolveConfig';
 import GlobalStyles from '../UI/GlobalStyles';
+import tailwindConfig from '../../tailwind.config';
 
-export const spacing = {
-  sp0: '0px',
-  sp4: '4px',
-  sp8: '8px',
-  sp16: '16px',
-  sp24: '24px',
-  sp32: '32px',
-  sp64: '64px',
-  sp128: '128px',
-  sp256: '256px',
-};
-
-export type SpacingEnum = keyof typeof spacing;
+const tailwind = resolveConfig(tailwindConfig);
 
 export type AppTheme = {
-  spacing: typeof spacing;
+  // Extracted from tailwind.theme.spacing
+  spacing: {
+    '0': string;
+    '1': string;
+    '2': string;
+    '3': string;
+    '4': string;
+    '5': string;
+    '6': string;
+    '8': string;
+    '10': string;
+    '12': string;
+    '16': string;
+    '20': string;
+    '24': string;
+    '32': string;
+    '40': string;
+    '48': string;
+    '56': string;
+    '64': string;
+    px: string;
+  };
+  // Extracted from tailwind.theme.screens
+  screens: { sm: string; md: string; lg: string; xl: string };
+  // Extracted from tailwind.theme.colors
   colors: {
+    transparent: string;
+    current: string;
+    black: string;
+    white: string;
+    gray: {
+      '100': string;
+      '200': string;
+      '300': string;
+      '400': string;
+      '500': string;
+      '600': string;
+      '700': string;
+      '800': string;
+      '900': string;
+    };
+    red: {
+      '100': string;
+      '200': string;
+      '300': string;
+      '400': string;
+      '500': string;
+      '600': string;
+      '700': string;
+      '800': string;
+      '900': string;
+    };
+    orange: {
+      '100': string;
+      '200': string;
+      '300': string;
+      '400': string;
+      '500': string;
+      '600': string;
+      '700': string;
+      '800': string;
+      '900': string;
+    };
+    yellow: {
+      '100': string;
+      '200': string;
+      '300': string;
+      '400': string;
+      '500': string;
+      '600': string;
+      '700': string;
+      '800': string;
+      '900': string;
+    };
+    green: {
+      '100': string;
+      '200': string;
+      '300': string;
+      '400': string;
+      '500': string;
+      '600': string;
+      '700': string;
+      '800': string;
+      '900': string;
+    };
+    teal: {
+      '100': string;
+      '200': string;
+      '300': string;
+      '400': string;
+      '500': string;
+      '600': string;
+      '700': string;
+      '800': string;
+      '900': string;
+    };
+    blue: {
+      '100': string;
+      '200': string;
+      '300': string;
+      '400': string;
+      '500': string;
+      '600': string;
+      '700': string;
+      '800': string;
+      '900': string;
+    };
+    indigo: {
+      '100': string;
+      '200': string;
+      '300': string;
+      '400': string;
+      '500': string;
+      '600': string;
+      '700': string;
+      '800': string;
+      '900': string;
+    };
+    purple: {
+      '100': string;
+      '200': string;
+      '300': string;
+      '400': string;
+      '500': string;
+      '600': string;
+      '700': string;
+      '800': string;
+      '900': string;
+    };
+    pink: {
+      '100': string;
+      '200': string;
+      '300': string;
+      '400': string;
+      '500': string;
+      '600': string;
+      '700': string;
+      '800': string;
+      '900': string;
+    };
     primary: string;
     secondary: string;
     background: string;
     backgroundInverted: string;
     textMain: string;
-    textLighter: string;
     textOnInverted: string;
   };
 };
 
 const theme: AppTheme = {
-  spacing,
-  colors: {
-    primary: 'var(--primary)',
-    secondary: 'var(--secondary)',
-    background: 'var(--background)',
-    backgroundInverted: 'var(--background-inverted)',
-    textMain: 'var(--text-main)',
-    textLighter: 'var(--text-lighter)',
-    textOnInverted: 'var(--text-on-inverted)',
-  },
+  spacing: tailwind.theme.spacing,
+  screens: tailwind.theme.screens,
+  colors: tailwind.theme.colors,
 };
 
 type AppThemeContext = {
@@ -76,7 +195,6 @@ export const AppThemeProvider: React.FC<{ children: React.ReactNode }> = ({
   return (
     <div id="theme-provider">
       <ThemeProvider theme={theme}>
-        <Normalize />
         <GlobalStyles />
         <AppThemeContext.Provider
           value={{

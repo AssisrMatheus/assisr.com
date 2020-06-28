@@ -5,10 +5,11 @@ import {
   localeMessages,
   useLocale,
 } from '../../components/Providers/LocaleProvider';
-import { Container } from '../../components/UI/Container';
+
 import { Header } from '../../components/UI/Header';
 import { Post } from '../../interfaces/posts';
 import { getPosts } from '../../lib/post';
+import { Container } from '../../components/UI/Container';
 
 const Home: React.FC<HomeProps> = ({ posts }) => {
   const locale = useLocale();
@@ -17,7 +18,7 @@ const Home: React.FC<HomeProps> = ({ posts }) => {
       <Header />
       <Container>
         {posts && posts.length > 0 && (
-          <div style={{ margin: '0 auto', maxWidth: '1200px' }}>
+          <div>
             {posts.map((post) => (
               <Link
                 key={post.slug}
