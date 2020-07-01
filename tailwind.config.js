@@ -11,9 +11,27 @@ module.exports = {
   ],
   theme: {
     fontFamily: {
-      body: ['"Hammersmith One"', 'Helvetica', 'Roboto', 'sans-serif'],
+      body: [
+        'Montserrat',
+        'system-ui',
+        '-apple-system',
+        'BlinkMacSystemFont',
+        '"Segoe UI"',
+        'Roboto',
+        '"Helvetica Neue"',
+        'Arial',
+        '"Noto Sans"',
+        'sans-serif',
+        '"Apple Color Emoji"',
+        '"Segoe UI Emoji"',
+        '"Segoe UI Symbol"',
+        '"Noto Color Emoji"',
+      ],
     },
     extend: {
+      margin: {
+        '0.5': '0.15rem',
+      },
       colors: {
         primary: 'var(--primary)',
         secondary: 'var(--secondary)',
@@ -21,6 +39,7 @@ module.exports = {
         backgroundInverted: 'var(--background-inverted)',
         textMain: 'var(--text-main)',
         textLighter: 'var(--text-lighter)',
+        textLightest: 'var(--text-lightest)',
         textOnInverted: 'var(--text-on-inverted)',
       },
     },

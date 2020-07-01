@@ -1,9 +1,8 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import React from 'react';
-import { FormattedMessage, useIntl } from 'react-intl';
+import { useIntl } from 'react-intl';
 import AsyncImage from '../AsyncImage';
 import { Container } from '../Container';
-import { HeaderOne, Paragraph } from '../Typography';
 
 export const Header: React.FC = () => {
   const intl = useIntl();
@@ -20,14 +19,14 @@ export const Header: React.FC = () => {
               })} profile photo`}
             />
           </div>
-          <div>
-            <HeaderOne>
+          {/* <div>
+            <h1>
               <FormattedMessage id="profile.name" />
-            </HeaderOne>
-            <Paragraph>
+            </h1>
+            <p>
               <FormattedMessage id="profile.description" />
-            </Paragraph>
-          </div>
+            </p>
+          </div> */}
         </div>
       </Container>
     </header>

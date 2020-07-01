@@ -3,5 +3,9 @@
   "profile": {
     "name": "Matheus Assis Rios",
     "description": "Technologist on Systems for Internet. With work experience in big and small companies, which gave me not only programming abilities bug also experience with bigger and smaller projects. After those experiences, I wanted something new and accepted the challenge in a Machine Learning startup, helping them get obstacles out of the way. This turned me in a versatile person, since I had to always learn new things, which I always learn fast. That's why I always like to keep myself up to date, something that keeps my mind fresh."
+  },
+  "postTeaser": {
+    "readMore": "Read more",
+    "goToArticle": "Go to article"
   }
 }

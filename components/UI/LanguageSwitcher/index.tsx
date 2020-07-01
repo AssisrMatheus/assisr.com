@@ -9,12 +9,16 @@ const LanguageSwitcher: React.FC = () => {
   const locale = useLocale();
   const lib = useMemo(
     () => ({
-      img: (attribs: any) => (
-        <img
-          {...attribs}
-          className="emoji h-8 flex items-center justify-center"
-        />
-      ),
+      img: (attribs: any) => {
+        const values = { ...attribs };
+        delete values.class;
+        return (
+          <img
+            {...values}
+            className={`${attribs.class} emoji h-8 flex items-center justify-center`}
+          />
+        );
+      },
     }),
     []
   );

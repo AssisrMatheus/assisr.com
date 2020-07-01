@@ -1,38 +1,35 @@
 import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from 'next';
-import Link from 'next/link';
 import React from 'react';
+import { useIntl } from 'react-intl';
 import { AppLayout } from '../../components/Layouts/AppLayout';
-import {
-  localeMessages,
-  useLocale,
-} from '../../components/Providers/LocaleProvider';
+import { localeMessages } from '../../components/Providers/LocaleProvider';
+import AsyncImage from '../../components/UI/AsyncImage';
 import { Container } from '../../components/UI/Container';
-import { Header } from '../../components/UI/Header';
 import PostTeaser from '../../components/UI/PostTeaser';
 import { Post } from '../../interfaces/posts';
 import { getPosts } from '../../lib/post';
 
 const Home: React.FC<HomeProps> = ({ posts }) => {
-  const locale = useLocale();
+  const intl = useIntl();
   return (
     <AppLayout>
-      <Header />
-      <Container>
+      {/* <Header /> */}
+      <Container className="mt-24">
         <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
-          <div className="col-span-1 md:col-span-2" />
+          <div className="col-span-1 md:col-span-2 flex justify-center">
+            <AsyncImage
+              className="rounded-full h-48"
+              src="/img/profile.jfif"
+              alt={`${intl.formatMessage({
+                id: 'profile.name',
+              })} profile photo`}
+            />
+          </div>
           <div className="col-span-1 md:col-span-3">
             {posts && posts.length > 0 && (
               <div className="flex flex-col space-y-16">
                 {posts.map((post) => (
-                  <Link
-                    key={post.slug}
-                    href="/[locale]/blog/[slug]"
-                    as={`/${locale}/blog/${post.slug}`}
-                  >
-                    <a>
-                      <PostTeaser post={post} />
-                    </a>
-                  </Link>
+                  <PostTeaser key={post.slug} post={post} />
                 ))}
               </div>
             )}
