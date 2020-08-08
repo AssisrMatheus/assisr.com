@@ -4,7 +4,7 @@ import AsyncImage from '../AsyncImage';
 type CardProps = { title: string; image?: string; actions?: React.ReactNode };
 
 const Card: React.FC<CardProps> = ({ children, title, image, actions }) => (
-  <div className="bg-white rounded-lg shadow-xl">
+  <div className="bg-elevation rounded-lg shadow-xl">
     {image && (
       <div className="bg-gray-400 rounded-t-lg">
         <AsyncImage

@@ -152,9 +152,8 @@ export type AppTheme = {
     secondary: string;
     background: string;
     backgroundInverted: string;
-    textMain: string;
-    textLighter: string;
-    textOnInverted: string;
+    paragraph: string;
+    elevation: string;
   };
 };
 

@@ -6,29 +6,27 @@ export default createGlobalStyle`
     transition: background-color 70ms ease-out, color 70ms ease-out;
     overflow-x: hidden;
     ${tw`bg-background`}
-    ${tw`text-textMain`}
+    ${tw`text-paragraph`}
     /* ${tw`font-body`} */
 
     &.dark-mode {
-      /* --primary: ; */
+      --primary: #C72241;
       /* --secondary: ; */
       --background: #24292D;
       --background-inverted: #E9ECEE;
-      --text-main: #161D2E;
-      --text-lighter: #6C7280;
-      --text-lightest: #91949c;
-      --text-on-inverted: #24292D;
+
+      --paragraph: #D7DADC;
+      --elevation: #1A1A1B;
     }
 
     &.light-mode {
-      /* --primary: ; */
+      --primary: #C72241;
       /* --secondary: ; */
       --background: #E9ECEE;
       --background-inverted: #24292D;
-      --text-main: #161D2E;
-      --text-lighter: #6C7280;
-      --text-lightest: #91949c;
-      --text-on-inverted: #FAFBFD;
+
+      --paragraph: #161D2E;
+      --elevation: #FFF;
     }
   }
 `;
