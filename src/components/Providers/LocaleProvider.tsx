@@ -6,8 +6,8 @@ import momentBr from 'moment/locale/pt-br';
 import { useRouter } from 'next/router';
 import React, { useContext, useEffect, useMemo } from 'react';
 import { IntlProvider } from 'react-intl';
-import en from '../../locales/en.json';
-import pt from '../../locales/pt.json';
+import en from '../../../locales/en.json';
+import pt from '../../../locales/pt.json';
 
 export const localeMessages = {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any

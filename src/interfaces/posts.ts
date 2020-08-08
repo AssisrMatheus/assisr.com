@@ -1,6 +1,8 @@
 export type Post = {
   locale: string;
   slug: string;
+  content: string;
+  excerpt?: string;
   matter: {
     title: string;
     date: string;
@@ -9,9 +11,7 @@ export type Post = {
     coverCaption?: string;
     tags?: string[];
     externalLink?: string;
-    externalName?: 'LinkedIn' | 'AppMasters';
+    externalName?: 'LinkedIn';
     alternativeLanguage?: string;
   };
-  body?: string;
-  excerpt?: string;
 };

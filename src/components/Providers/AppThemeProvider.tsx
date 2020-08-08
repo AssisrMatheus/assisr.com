@@ -3,7 +3,7 @@ import { ThemeProvider } from 'styled-components';
 import useDarkMode from 'use-dark-mode';
 import resolveConfig from 'tailwindcss/resolveConfig';
 import GlobalStyles from '../UI/GlobalStyles';
-import tailwindConfig from '../../tailwind.config';
+import tailwindConfig from '../../../tailwind.config';
 
 const tailwind = resolveConfig(tailwindConfig);
 

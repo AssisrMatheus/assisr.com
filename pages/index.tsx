@@ -1,7 +1,7 @@
 import { NextPageContext } from 'next';
 import React from 'react';
-import { getLocale } from '../utils/locale';
-import { redirect } from '../utils/next';
+import { getLocale } from '../src/utils/locale';
+import { redirect } from '../src/utils/next';
 
 // eslint-disable-next-line mdx/no-unescaped-entities
 const Page = () => <h1>Home without locale</h1>;

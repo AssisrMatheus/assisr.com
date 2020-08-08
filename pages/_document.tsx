@@ -7,8 +7,8 @@ import Document, {
 } from 'next/document';
 import React from 'react';
 import { ServerStyleSheet } from 'styled-components';
-import { InlineJs } from '../components/UI/InlineJs';
-import { noFlashScript } from '../utils/noFlash';
+import { InlineJs } from '../src/components/UI/InlineJs';
+import { noFlashScript } from '../src/utils/noFlash';
 
 class MyDocument extends Document {
   public static async getInitialProps(ctx: DocumentContext) {

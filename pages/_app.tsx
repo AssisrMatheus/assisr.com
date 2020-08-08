@@ -1,9 +1,9 @@
 import { AppProps } from 'next/app';
 import Head from 'next/head';
 import React from 'react';
-import { LocaleProvider } from '../components/Providers/LocaleProvider';
-import { AppThemeProvider } from '../components/Providers/AppThemeProvider';
-import '../styles/tailwind.css';
+import '../src/styles/tailwind.css';
+import { AppThemeProvider } from '../src/components/Providers/AppThemeProvider';
+import { LocaleProvider } from '../src/components/Providers/LocaleProvider';
 
 const App: React.FC<AppProps> = ({ Component, pageProps }) => (
   <>

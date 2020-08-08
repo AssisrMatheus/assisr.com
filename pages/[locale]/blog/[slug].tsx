@@ -1,11 +1,13 @@
 /* eslint-disable react/no-danger */
-import React from 'react';
 import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from 'next';
-import { localeMessages } from '../../../components/Providers/LocaleProvider';
-import { getPosts, getPostBySlug } from '../../../lib/post';
-import { Post } from '../../../interfaces/posts';
-import { AppLayout } from '../../../components/Layouts/AppLayout';
-import { Container } from '../../../components/UI/Container';
+import React from 'react';
+import { AppLayout } from '../../../src/components/Layouts/AppLayout';
+import { localeMessages } from '../../../src/components/Providers/LocaleProvider';
+import { getPostSlugs, getPostBySlug } from '../../../src/lib/post';
+import { Post } from '../../../src/interfaces/posts';
+import { mdToHtml } from '../../../src/lib/markdown';
+import { ParseHtmlContent } from '../../../src/components/UI/ParseHtmlContent';
+import { Container } from '../../../src/components/UI/Container';
 
 const Home: React.FC<HomeContainerProps> = ({ post }) => {
   return (
@@ -14,9 +16,7 @@ const Home: React.FC<HomeContainerProps> = ({ post }) => {
         {post && (
           <div>
             <h2>{post.matter.title}</h2>
-            {post.body && (
-              <div dangerouslySetInnerHTML={{ __html: post.body }} />
-            )}
+            <ParseHtmlContent content={post.content} />
           </div>
         )}
       </Container>
@@ -27,9 +27,11 @@ const Home: React.FC<HomeContainerProps> = ({ post }) => {
 export const getStaticPaths: GetStaticPaths = async () => {
   const paths = (
     await Promise.all(
+      // For all locales
       Object.keys(localeMessages).map(async (locale) => {
-        const posts = await getPosts(locale as string);
-        return posts.map((post) => ({ locale, slug: post.slug }));
+        // Get all posts for the locale
+        const slugs = await getPostSlugs(locale);
+        return slugs.map((slug) => ({ locale, slug }));
       })
     )
   )
@@ -54,12 +56,12 @@ export const getStaticProps: GetStaticProps<HomeContainerGetStaticProps> = async
       params.locale as string,
       params.slug as string
     );
-    props.post = post;
+    props.post = { ...post, content: await mdToHtml(post.content) };
   }
 
   return {
     props,
-    unstable_revalidate: 5,
+    revalidate: 5,
   };
 };
 

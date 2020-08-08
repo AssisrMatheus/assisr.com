@@ -1,13 +1,14 @@
 import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from 'next';
 import React from 'react';
 import { useIntl } from 'react-intl';
-import { AppLayout } from '../../components/Layouts/AppLayout';
-import { localeMessages } from '../../components/Providers/LocaleProvider';
-import AsyncImage from '../../components/UI/AsyncImage';
-import { Container } from '../../components/UI/Container';
-import PostTeaser from '../../components/UI/PostTeaser';
-import { Post } from '../../interfaces/posts';
-import { getPosts } from '../../lib/post';
+
+import { AppLayout } from '../../src/components/Layouts/AppLayout';
+import AsyncImage from '../../src/components/UI/AsyncImage';
+import PostTeaser from '../../src/components/UI/PostTeaser';
+import { localeMessages } from '../../src/components/Providers/LocaleProvider';
+import { Post } from '../../src/interfaces/posts';
+import { getAllPosts } from '../../src/lib/post';
+import { Container } from '../../src/components/UI/Container';
 
 const Home: React.FC<HomeProps> = ({ posts }) => {
   const intl = useIntl();
@@ -57,13 +58,13 @@ export const getStaticProps: GetStaticProps<HomeGetStaticProps> = async ({
   const props: HomeGetStaticProps = { ...params };
 
   if (params && params.locale) {
-    const posts = await getPosts(params.locale as string);
+    const posts = await getAllPosts(params.locale as string);
     props.posts = posts;
   }
 
   return {
     props,
-    unstable_revalidate: 5,
+    revalidate: 5,
   };
 };
 

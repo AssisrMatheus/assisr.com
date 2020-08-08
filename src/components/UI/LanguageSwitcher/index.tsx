@@ -9,7 +9,8 @@ const LanguageSwitcher: React.FC = () => {
   const locale = useLocale();
   const lib = useMemo(
     () => ({
-      img: (attribs: any) => {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      img: (_: any, attribs: any) => {
         const values = { ...attribs };
         delete values.class;
         return (

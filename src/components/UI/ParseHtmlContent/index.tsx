@@ -6,8 +6,8 @@ type ParseHtmlContentProps = {
   trim?: boolean;
   componentLibrary?: {
     [key: string]: (
-      attribs: Record<string, unknown>,
-      children: React.ReactNode
+      children: React.ReactNode,
+      attribs?: Record<string, unknown>
     ) => React.ReactNode;
   };
 };
@@ -23,12 +23,14 @@ export const ParseHtmlContent: React.FC<ParseHtmlContentProps> = ({
       replace: componentLibrary
         ? ({ name, type, attribs, children }) => {
             if (
+              name &&
+              children &&
               type === 'tag' &&
               Object.keys(componentLibrary).includes(name)
             ) {
               return componentLibrary[name](
-                attribs,
-                domToReact(children, options)
+                domToReact(children, options),
+                attribs
               );
             }
 
