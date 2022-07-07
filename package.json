@@ -37,7 +37,7 @@
     "js-cookie": "^2.2.1",
     "lodash": "^4.17.19",
     "mem": "^6.1.0",
-    "moment": "^2.27.0",
+    "moment": "^2.29.4",
     "next": "^9.5.1",
     "next-cookies": "^2.0.3",
     "postcss-cli": "^7.1.1",
